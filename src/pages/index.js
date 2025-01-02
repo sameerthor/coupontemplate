@@ -139,7 +139,7 @@ export default function Home({ categories, stores, blogs }) {
                         }
                         width={0}
                         height={0}
-                        style={{ width: "100%", height: "auto" }}
+                        style={{ width: "100%", height: "75px" }}
                         alt={item.title}
                       />
                     </Link>
@@ -155,8 +155,8 @@ export default function Home({ categories, stores, blogs }) {
       {/* Trending Blogs */}
       <section className="container-fluid tranding">
         <div className="container">
-          <h2>Trending Blogs</h2>
           <div className="row tranding-blog">
+          <h2>Trending Blogs</h2>
             {blogs.slice(0, 12).map((item, index) => (
               <div className="col-lg-3 col-md-6 col-sm-12 blog-box" key={index}>
                 <div className="blog-item shadow-sm">
