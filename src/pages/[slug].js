@@ -154,13 +154,12 @@ const StorePage = ({ store, relStores, simCat }) => {
                             <div className="storeHeader row row-cols-2">
                                 <div className="header-content col-8 p-0">
                                     <h1>
-                                        <strong>{store.title}</strong> Coupon Code {moment().format("MMMM YYYY")}
+                                        {store.store_h1}
                                     </h1>
                                     <h2 className="dealAvl">
                                         {codeCount} {codeCount === 1 ? "Code" : "Codes"} &amp;{" "}
                                         {dealCount} {dealCount === 1 ? "Deal" : "Deals"} available
                                     </h2>
-                                    <p>{store.seo_description || "Flat 40% OFF at Google Workspace Kow"}</p>
                                 </div>
                                 <aside className="col-4">
                                     <div className="header-thumb">
