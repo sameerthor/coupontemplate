@@ -23,7 +23,7 @@ module.exports = {
           defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
           safelist: {
             standard: ['html', 'body', 'btn','slick-slider'],
-            deep: [/^row/,/^col/,/^btn-/,/carousel/, /^navbar/,/^nav/,/^modal/,/^search/,/^visible/,/form-control/,/categorySection/]
+            deep: [/^react-search-box-dropdown/,/^row/,/^col/,/^btn-/,/carousel/, /^navbar/,/^nav/,/^modal/,/^search/,/^visible/,/form-control/,/categorySection/]
 
           }        
         }
