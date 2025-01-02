@@ -79,7 +79,7 @@
 .more-btn{
     margin-top: 1.4rem;
 }
-.more-btn button{
+.more-btn a{
     margin: auto;
     display: block;
     background-color: #93e2db;
@@ -90,6 +90,8 @@
     padding: .8rem;
     width: 11rem;
     font-weight: 600;
+    text-align: center;
+    text-decoration: none;
 }
 .more-btn button:hover{
     background-color: #cbf3f0;
@@ -176,6 +178,7 @@
     object-fit: contain;
     display: block;
     margin: auto;
+    height: 75px;
 }
 .featured-item img:hover{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -319,6 +322,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    object-fit: contain;
+    height: 100px;
 }
 .storeInfo{
     display: flex;
@@ -333,6 +338,7 @@
     line-height: 1.5;
     font-size: .85rem;
     display: -webkit-box;
+    line-clamp: 1;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;

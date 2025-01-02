@@ -66,14 +66,6 @@ box-sizing: border-box;
 font-family: 'Montserrat', sans-serif;
 }
 
-.react-search-box-dropdown{
-  z-index: 99999 !important;
-    position: fixed !important;
-    color: black;
-    width: 400px;
-    max-width: 100%;
-    top: 7%;
-}
 
 .nav{
   position: fixed;
@@ -900,4 +892,3 @@ display: block;
 margin-top: 1rem;
 line-height: 1.4;
 }
-

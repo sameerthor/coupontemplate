@@ -10,9 +10,9 @@ export default function Footer() {
                 <footer className="footer-box px-lg-5 px-md-3 px-2">
                     <div className="row mx-auto">
                         <div className="col-lg-5 col-md-12 col-sm-12 mb-3 about-scoop footer-itmes">
-                            <h2 className="footer-logo">
+                            <h1 className="footer-logo">
                                 Super<span>Costs</span>
-                            </h2>
+                            </h1>
                             <p>
                                 Greetings! Welcome to SuperCosts.com, your ultimate destination for an
                                 extensive collection of coupons and deals. Discover unbeatable prices
@@ -204,49 +204,18 @@ export default function Footer() {
                                 Categories
                             </Link>
                         </div>
-                        <div className="col-lg-2 col-md-4 col-sm-12 mb-3 footer-links">
-                            <h3>NEED HELP?</h3>
-                            <a href="">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width={16}
-                                    height={16}
-                                    fill="currentColor"
-                                    className="bi bi-chevron-double-right"
-                                    viewBox="0 0 16 16"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"
-                                    />
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"
-                                    />
-                                </svg>{" "}
-                                Sitemap
-                            </a>
-                            <a href="">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width={16}
-                                    height={16}
-                                    fill="currentColor"
-                                    className="bi bi-chevron-double-right"
-                                    viewBox="0 0 16 16"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"
-                                    />
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"
-                                    />
-                                </svg>{" "}
-                                Privacy Policy
-                            </a>
-                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-12 mb-3 footer-links">
+                            <h3>Stay Updated</h3>
+                            <div class="subscribe">
+                                <div class="subscribe-item">
+                                    <form action="">
+                                        <input type="text" placeholder="Your Email"/>
+                                        <button>Subscribe</button>
+                                    </form>
+                                </div>
+                                <span>You can opt out of our newsletters at any time. See our privacy policy.</span>
+                            </div>
+                        </div>            
                     </div>
                 </footer>
                 <div className="container-fluid copyright">
