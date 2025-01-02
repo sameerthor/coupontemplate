@@ -1,0 +1,367 @@
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import Coupon from "@/components/coupon";
+import { NextSeo } from 'next-seo';
+import Image from "next/image";
+import _ from 'lodash'
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import moment from "moment";
+import reactStringReplace from 'react-string-replace';
+import { renderToString } from 'react-dom/server';
+import "@/styles/store.css";
+const RatingBox = dynamic(() => import('@/components/ratingbox'),
+    {
+        ssr: false,
+    });
+
+const StorePage = ({ store, relStores, simCat }) => {
+    const codeCount = store.coupon_set.filter(coupon => coupon.coupon_type === "code").length;
+    const dealCount = store.coupon_set.filter(coupon => coupon.coupon_type === "deal").length;
+    var store_rating = 0;
+    var total_ratings = 0;
+    if (store.rating.length > 0) {
+        store_rating = ((5 * store.rating[0].five + 4 * store.rating[0].four + 3 * store.rating[0].three + 2 * store.rating[0].two + 1 * store.rating[0].one) / (store.rating[0].five + store.rating[0].four + store.rating[0].three + store.rating[0].two + store.rating[0].one)).toFixed(1)
+        total_ratings = store.rating[0].five + store.rating[0].four + store.rating[0].three + store.rating[0].two + store.rating[0].one
+    }
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://supercosts.com"
+        }, store.category.length > 0 ? {
+            "@type": "ListItem",
+            "position": 2,
+            "name": store.category[0].title,
+            "item": "https://supercosts.com/category/" + store.category[0].slug
+        } : '', {
+            "@type": "ListItem",
+            "position": store.category.length > 0 ? 3 : 2,
+            "name": store.title
+        }]
+    }
+    const regex1 = /(.*[\s+\"\']faq_question[\s+\"\'].*)/g;
+    var questions = [];
+    var answers = [];
+    let m
+    while ((m = regex1.exec(store.extra_info)) !== null) {
+        // This is necessary to avoid infinite loops with zero-width matches
+        if (m.index === regex1.lastIndex) {
+            regex1.lastIndex++;
+        }
+
+        // The result can be accessed through the `m`-variable.
+        m.forEach((match, groupIndex) => {
+            if (groupIndex == 0)
+                questions.push(match.replace(/<[^>]+>/g, ''));
+        });
+    }
+    const regex2 = /(.*[\s+\"\']faq_answer[\s+\"\'].*)/g
+
+    while ((m = regex2.exec(store.extra_info)) !== null) {
+        // This is necessary to avoid infinite loops with zero-width matches
+        if (m.index === regex2.lastIndex) {
+            regex2.lastIndex++;
+        }
+
+        // The result can be accessed through the `m`-variable.
+        m.forEach((match, groupIndex) => {
+            if (groupIndex == 0)
+                answers.push(match.replace(/<[^>]+>/g, ''));
+        });
+    }
+
+    const jsonQD = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": questions.map((item, ind) => {
+            return {
+                "@type": "Question",
+                "name": item,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": answers[ind]
+                }
+            }
+        })
+    }
+    return (
+        <>
+          <NextSeo
+                title={store.seo_title.replaceAll("%%Year%%", moment().format('YYYY')).replaceAll("%%CurrentMonth%%", moment().format('MMMM'))}
+                description={store.seo_description}
+            />
+
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            {questions.length > 0 && <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonQD) }}
+            />}
+            {/* Breadcrumb */}
+            <section className="storePage">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12 p-0">
+                            <div className="breadcrumb">
+                                <ul>
+                                    <li>
+                                        <a href="/">supercosts.com</a> /
+                                    </li>
+                                    <li>{store.title} coupon code</li>
+                                </ul>
+                                <div className="share">
+                                    <div>
+                                        <a href="#" className="shareBtn">
+                                            <svg
+                                                className="h-4 w-4 inline"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                width="14"
+                                                height="14"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth="2"
+                                                    d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+                                                ></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    {/* Add Social Share Links */}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Store Content */}
+            <section className="storeContent">
+                <div className="container">
+                    <div className="couponsection">
+                        {/* Header Section */}
+                        <div className="contentBox">
+                            <div className="storeHeader row row-cols-2">
+                                <div className="header-content col-8 p-0">
+                                    <h1>
+                                        <strong>{store.title}</strong> Coupon Code {moment().format("MMMM YYYY")}
+                                    </h1>
+                                    <h2 className="dealAvl">
+                                        {codeCount} {codeCount === 1 ? "Code" : "Codes"} &amp;{" "}
+                                        {dealCount} {dealCount === 1 ? "Deal" : "Deals"} available
+                                    </h2>
+                                    <p>{store.seo_description || "Flat 40% OFF at Google Workspace Kow"}</p>
+                                </div>
+                                <aside className="col-4">
+                                    <div className="header-thumb">
+                                        <div className="header-store-thumb">
+                                            <a rel="nofollow" target="_blank" title={`Shop ${store.title}`} href={store.store_link || "#"}>
+                                                <Image
+                                                    width="100"
+                                                    height={100}
+                                                    src={`${store.image.replace('http://', 'https://')}`}
+                                                    alt={`${store.title.trim()} Coupon Code`}
+                                                    title={`${store.title.trim()}`}
+                                                    decoding="async"
+                                                />
+                                            </a>
+                                        </div>
+                                        <RatingBox key={'store_' + store.id} store={store} />
+
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+
+                        {/* Coupons List */}
+                        <div className="listCoupns">
+                        {store.coupon_set.length > 0 && store.coupon_set.sort(function (a, b) {
+                                    return a.coupon_type !== null ? a.coupon_type.localeCompare(b.coupon_type) : a;
+                                }).map((item, index) =>
+                                    <Coupon key={index} store={_.omit(store, 'coupon_set')} coupon_data={item} />
+                                )}
+                           
+                        </div>
+                        <div className="row p-0">
+                            <h4 className="sidebarHeading p-0">About {store.title}</h4>
+                        </div>
+                        <div className="about-store" dangerouslySetInnerHTML={{
+                            __html: reactStringReplace(store.store_description, '[offer-table]', (match, i) => (
+                                renderToString(<div className="offerToday">
+                                    <h3>Today's {store.title} Offer</h3>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>🛍️ Total Offers</td>
+                                                <td className="text-right font-medium">{store.coupon_set && store.coupon_set.length}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>🏷️ Active Coupon Codes</td>
+                                                <td className="text-right font-medium">{store.coupon_set.filter(x => x.coupon_type == 'code').length}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>🛒 Free Shipping</td>
+                                                <td className="text-right font-medium">{store.coupon_set.filter(x => x.title.toLowerCase().includes("shipping")).length}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>🔥 Best Offer</td>
+                                                <td className="text-right font-medium">Flat {store.coupon_set && store.coupon_set[0].title}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>)
+                            )).join("")
+                        }}>
+                        </div>
+                        <div className="about-store" dangerouslySetInnerHTML={{ __html: store.extra_info }}>
+                        </div>
+
+                        {/* Coupon Summary */}
+                        <div className="storeWidget">
+                            <h4>Coupon Summary for {moment().format("MMMM YYYY")}</h4>
+                            <div className="summary-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Discount</th>
+                                            <th>Title</th>
+                                            <th>Coupon</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {store.coupon_set.map(coupon => (
+                                            <tr key={coupon.id}>
+                                                <td>{coupon.discount_value}</td>
+                                                <td>{coupon.title}</td>
+                                                <td>{coupon.coupon_code || "Best Deal"}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                        {/* Related Stores or Similar Categories */}
+                        {relStores.length > 3 ? (
+                            <>
+                                <div className="row p-0"> <h4 className="storeWidgetHeading relatedStore p-0">Related Stores</h4></div>
+                                <div class="topStore mb-4">
+                                    <ul>
+                                        {relStores.map(store => (
+                                            <li key={store.slug}>
+                                                <Link href={`/${store.slug}`}>{store.title}</Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                            </>
+                        ) : (
+                            <>
+                                <div className="row p-0"> <h4 className="storeWidgetHeading relatedStore p-0">Similar Categories</h4></div>
+                                <div class="topStore mb-4">
+                                    <ul>
+                                        {simCat.results.map(category => (
+                                            <li key={category.slug}>
+                                                <Link href={`/category/${category.slug}`}>{category.title}</Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </div>
+            </section>
+        </>
+    );
+};
+
+export default StorePage;
+
+
+export async function getStaticProps({ params }) {
+    const res = await fetch('https://backend.supercosts.com/stores/' + params.slug + '/')
+    var store = await res.json()
+    if (store.detail) {
+        return {
+            notFound: true
+        };
+    }
+    store.coupon_set.map(coupon => {
+        if (coupon.title.includes("$")) {
+            return coupon.title = "Best Deal";
+        }
+    });
+
+    var simCat = [];
+    if (store.category[0]) {
+        const resRelStores = await fetch(`https://backend.supercosts.com/stores/?category__id=${store.category[0].id}&ordering=-id`)
+        var relStores = await resRelStores.json()
+        relStores = _.shuffle(relStores).slice(0, 12)
+        if (relStores.length <= 3) {
+            const rescat = await fetch(`https://backend.supercosts.com/categories/?limit=4&offset=${Math.ceil(parseInt(store.category[0].id) / 4)}`)
+            simCat = await rescat.json()
+
+        }
+
+    } else {
+        var relStores = [];
+    }
+
+    const store_names = relStores.filter(f => f.id !== store.id).slice(0, 2).map(item => `<a href="/${item.slug}">${item.title}</a>`)
+    store.store_description = store.store_description.replaceAll("%%storename%%", store.title);
+    store.store_description = store.store_description.replaceAll("%pe­rcentage% off", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%percentage% off", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%pe­rcentage% Off", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%percentage% Off", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%pe­rcentage% OFF", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%percentage% OFF", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%pe­rcentage%", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%percentage%", store.coupon_set[0].title);
+    store.store_description = store.store_description.replace(/XXX/, store.coupon_set.filter(x => x.coupon_type == 'code').length > 0 ? store.coupon_set.filter(x => x.coupon_type == 'code')[0].coupon_code : "");
+    store.store_description = store.store_description.replace(/XX/, store.coupon_set.length);
+    store.extra_info = store.extra_info.replace('XXX', store.coupon_set.filter(x => x.coupon_type == 'code').length > 0 ? store.coupon_set.filter(x => x.coupon_type == 'code')[0].coupon_code : "");
+    store.extra_info = store.extra_info.replace('XX', store.coupon_set.length);
+    store.store_description = store.store_description.replaceAll("%%currentmonth%%", moment().format('MMMM'));
+    store.store_description = store.store_description.replaceAll("%%curre­ntmonth%%", moment().format('MMMM'));
+    store.store_description = store.store_description.replaceAll("%%currentyear%%", moment().format('YYYY'));
+    store.store_description = store.store_description.replaceAll("currentyear%%", moment().format('YYYY'));
+    store.store_description = store.store_description.replaceAll(/%%categorystore%% and %%categorystore%%|%categorystore%, %categorystore%, and %categorystore%|%categorystore%, %categorystore%|%categorystore% and %categorystore%|%%categorystore%%, %%categorystore%%|%categorystore%, %categorystore%, %categorystore%|%categorystore% %categorystore%, %categorystore%|%categorystore% %categorystore% %categorystore%|%categorystore% %categorystore% and %categorystore%/gi, store_names.join(", "));
+
+    return {
+        props: {
+            store,
+            relStores,
+            simCat
+        },
+        // Next.js will attempt to re-generate the page:
+        // - When a request comes in
+        // - At most once every 10 seconds
+        revalidate: 5, // In seconds
+    }
+}
+
+export async function getStaticPaths() {
+    const res = await fetch("https://backend.supercosts.com/stores/");
+    const stores = await res.json();
+
+    const paths = stores.map(store => ({
+        params: { slug: store.slug },
+    }));
+
+    return { paths, fallback: "blocking" };
+}
+
