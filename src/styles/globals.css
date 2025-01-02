@@ -892,3 +892,8 @@ display: block;
 margin-top: 1rem;
 line-height: 1.4;
 }
+.react-search-box-dropdown{
+  position: absolute;
+  top: 50px;
+  max-width: 100%;
+}

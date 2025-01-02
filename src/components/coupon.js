@@ -26,7 +26,8 @@ export default function Coupon({ store, coupon_data }) {
                 <div className="couponInfo">
                     <div className="latest-coupon">
                         <div className="coupon-title">{coupon_data.discount_value || "Best Deal"}</div>
-                        <p className="couponDesc">{coupon_data.content}</p>
+                        {/* <p className="couponDesc">{coupon_data.content}</p> */}
+                        <p className="couponDesc" dangerouslySetInnerHTML={{ __html: coupon_data.content }}/>
                     </div>
                     <div className="coupon-detail coupon-button-type">
                         {coupon_data.coupon_type === "code" ? (

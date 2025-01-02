@@ -19,8 +19,9 @@ export default function App({ Component, pageProps }) {
   return (
     <main className={inter.className}>
           <Head>
-
-            <style>{dom.css()}</style></Head>
+            <style>{dom.css()}</style>
+            <script src="/custom.js" defer></script>
+          </Head>
 
       <Header />
       <Component {...pageProps} />
