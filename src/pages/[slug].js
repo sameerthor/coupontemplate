@@ -91,7 +91,7 @@ const StorePage = ({ store, relStores, simCat }) => {
     }
     return (
         <>
-          <NextSeo
+            <NextSeo
                 title={store.seo_title.replaceAll("%%Year%%", moment().format('YYYY')).replaceAll("%%CurrentMonth%%", moment().format('MMMM'))}
                 description={store.seo_description}
             />
@@ -154,7 +154,7 @@ const StorePage = ({ store, relStores, simCat }) => {
                             <div className="storeHeader row row-cols-2">
                                 <div className="header-content col-8 p-0">
                                     <h1>
-                                        {store.store_h1}
+                                        {store.store_h1.replace("%%Year%%", moment().format('YYYY'))}
                                     </h1>
                                     <h2 className="dealAvl">
                                         {codeCount} {codeCount === 1 ? "Code" : "Codes"} &amp;{" "}
@@ -184,12 +184,12 @@ const StorePage = ({ store, relStores, simCat }) => {
 
                         {/* Coupons List */}
                         <div className="listCoupns">
-                        {store.coupon_set.length > 0 && store.coupon_set.sort(function (a, b) {
-                                    return a.coupon_type !== null ? a.coupon_type.localeCompare(b.coupon_type) : a;
-                                }).map((item, index) =>
-                                    <Coupon key={index} store={_.omit(store, 'coupon_set')} coupon_data={item} />
-                                )}
-                           
+                            {store.coupon_set.length > 0 && store.coupon_set.sort(function (a, b) {
+                                return a.coupon_type !== null ? a.coupon_type.localeCompare(b.coupon_type) : a;
+                            }).map((item, index) =>
+                                <Coupon key={index} store={_.omit(store, 'coupon_set')} coupon_data={item} />
+                            )}
+
                         </div>
                         <div className="row p-0">
                             <h4 className="sidebarHeading p-0">About {store.title}</h4>
