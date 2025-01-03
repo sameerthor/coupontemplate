@@ -1497,9 +1497,7 @@ table>thead>tr>th, table>thead>tr>td {
     -webkit-line-clamp: 1;
     overflow: hidden;
     text-decoration: underline;
-    padding: .4rem;
     letter-spacing: .5px;
-    margin-bottom: .5rem;
 }
 .relatedStore{
     margin-bottom: 1rem;
@@ -1593,7 +1591,6 @@ table>thead>tr>th, table>thead>tr>td {
     letter-spacing: .5px;
     line-height: 1.4;
     margin-bottom: .5rem;
-    text-align: justify;
   }
   .storeCat{
     display: flex;
