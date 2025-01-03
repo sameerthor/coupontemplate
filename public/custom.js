@@ -1,15 +1,15 @@
-var  headerNav = document.querySelector(".headerNav"),
+var nav = document.querySelector(".nav"),
     searchIcon = document.querySelector("#searchIcon"),
     navOpenBtn = document.querySelector(".navOpenBtn"),
     navCloseBtn = document.querySelector(".navCloseBtn");
 
 searchIcon.addEventListener("click", () => {
-  headerNav.classList.toggle("openSearch");
-  headerNav.classList.remove("openNav");
+  nav.classList.toggle("openSearch");
+  nav.classList.remove("openNav");
 
     const icon = searchIcon.querySelector("svg");
 
-    if (headerNav.classList.contains("openSearch")) {
+    if (nav.classList.contains("openSearch")) {
         
         icon.innerHTML = `<path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>`;
     } else {
@@ -19,8 +19,8 @@ searchIcon.addEventListener("click", () => {
 });
 
 navOpenBtn.addEventListener("click", () => {
-  headerNav.classList.add("openNav");
-  headerNav.classList.remove("openSearch");
+  nav.classList.add("openNav");
+  nav.classList.remove("openSearch");
 
     const icon = searchIcon.querySelector("svg");
  
@@ -28,7 +28,7 @@ navOpenBtn.addEventListener("click", () => {
 });
 
 navCloseBtn.addEventListener("click", () => {
-  headerNav.classList.remove("openNav");
+  nav.classList.remove("openNav");
 });
 
 // Open header dropdown on hover

@@ -68,7 +68,7 @@ function Category({ category, stores, categories }) {
                                 </div>
                                 <div className="col-lg-5 col-md-6">
                                     <h1>Todays {category.title} Coupons &amp; Offers</h1>
-                                    <div className="divider-line mt-3 mb-3" />
+                                    <div className="divider-line mt-2 mb-2" />
                                     <div className="">
                                         <table>
                                             <tbody>
@@ -90,14 +90,17 @@ function Category({ category, stores, categories }) {
                                 </div>
                                 <div className="col-lg-4 col-md-12">
                                     <h1>Similar Categories</h1>
-                                    <div className="divider-line mt-3 mb-3" />
+                                    <div className="divider-line mt-2 mb-2" />
                                     <div className="similarCat">
                                         <ul>
-                                            {categories.map(item => item.id !== category.id &&
-                                                <li>
-                                                    <Link href={`/category/${item.slug}`}>{item.title}</Link>
-                                                </li>
-                                            )}
+                                            {categories
+                                                .filter(item => item.id !== category.id) 
+                                                .slice(0, 4)
+                                                .map(item => (
+                                                    <li key={item.id}>
+                                                        <Link href={`/category/${item.slug}`}>{item.title}</Link>
+                                                    </li>
+                                                ))}
                                         </ul>
                                     </div>
                                 </div>
@@ -122,8 +125,7 @@ function Category({ category, stores, categories }) {
                                                     <div className="storeImage">
                                                         <Link title={`${store.title}`} href={`/${store.slug}`}>
                                                             <img
-                                                                width={242}
-                                                                height={67}
+                                                            
                                                                 src={`${store.image}`}
                                                                 alt={`${coupon.title}`}
                                                                 title={`${store.title} coupons`}
@@ -134,7 +136,7 @@ function Category({ category, stores, categories }) {
                                             </div>
                                             <div className="storeData">
                                                 <Link href={`/${store.slug}`} className="storeName">
-                                                    {coupon.title}
+                                                    {coupon.content}
                                                 </Link>
                                             </div>
                                             <div className="dealBtnBox">
