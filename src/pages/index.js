@@ -24,11 +24,11 @@ export default function Home({ categories, stores, blogs }) {
         <div className="container">
           <div className="banner-slider">
             <Carousel showThumbs={false}>
-              {[1, 2, 3, 4, 5, 6, 7].map((num) => (
+              {[1, 2, 3, 4].map((num) => (
                 <div key={num}>
                   <a href="#">
                     <Image
-                      src={`/images/banner-${num}.jpg`}
+                      src={`/images/banner-${num}.png`}
                       width={0}
                       height={0}
                       sizes="100vw"
