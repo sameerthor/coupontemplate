@@ -896,4 +896,31 @@ line-height: 1.4;
   position: absolute;
   top: 50px;
   max-width: 100%;
+  width: 100%;
 }
+.headerNav button{
+ border: none;
+ outline: none;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ background-color: transparent;
+}
+.headerNav button svg{
+ width: 20px;
+ height: 20px;
+ }
+@media(max-width:991px){
+  .headerNav .navCloseBtn svg{
+   fill: #fff;
+  }
+}
+.nav .search-box input{
+  height: 45px;
+}
+.nav .search-box input::placeholder{
+ font-weight: 500;
+}
+.nav .search-box svg{
+ fill: #2ec4b6;
+ }

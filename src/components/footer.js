@@ -204,10 +204,10 @@ export default function Footer() {
                                 Categories
                             </Link>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-12 mb-3 footer-links">
+                        <div className="col-lg-3 col-md-4 col-sm-12 mb-3 footer-links">
                             <h3>Stay Updated</h3>
-                            <div class="subscribe">
-                                <div class="subscribe-item">
+                            <div className="subscribe">
+                                <div className="subscribe-item">
                                     <form action="">
                                         <input type="text" placeholder="Your Email"/>
                                         <button>Subscribe</button>
