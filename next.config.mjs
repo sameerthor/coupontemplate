@@ -2,13 +2,13 @@
 import path from "path";
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
     remotePatterns: [
       {
         hostname: '**',
       },
-    ],
+    ]
   },
   webpack(config) {
     let hasFound = false
@@ -26,8 +26,15 @@ const nextConfig = {
 
       if (hasFound) break
     }
+
     return config;
   },
+  rewrites: async () => [
+    {
+      source: '/image-sitemap.xml',
+      destination: '/sitemap',
+    }
+  ]
 };
 
 export default nextConfig;

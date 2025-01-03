@@ -314,6 +314,8 @@ export async function getStaticProps({ params }) {
     store.store_description = store.store_description.replaceAll("%percentage%", store.coupon_set[0].title);
     store.store_description = store.store_description.replace(/XXX/, store.coupon_set.filter(x => x.coupon_type == 'code').length > 0 ? store.coupon_set.filter(x => x.coupon_type == 'code')[0].coupon_code : "");
     store.store_description = store.store_description.replace(/XX/, store.coupon_set.length);
+    store.store_description = store.store_description.replace('XXX', store.coupon_set.filter(x => x.coupon_type == 'code').length > 0 ? store.coupon_set.filter(x => x.coupon_type == 'code')[0].coupon_code : "");
+    store.store_description = store.store_description.replace('XX', store.coupon_set.length);
     store.extra_info = store.extra_info.replace('XXX', store.coupon_set.filter(x => x.coupon_type == 'code').length > 0 ? store.coupon_set.filter(x => x.coupon_type == 'code')[0].coupon_code : "");
     store.extra_info = store.extra_info.replace('XX', store.coupon_set.length);
     store.store_description = store.store_description.replaceAll("%%currentmonth%%", moment().format('MMMM'));
