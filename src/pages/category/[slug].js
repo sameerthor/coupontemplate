@@ -136,7 +136,7 @@ function Category({ category, stores, categories }) {
                                             </div>
                                             <div className="storeData">
                                                 <Link href={`/${store.slug}`} className="storeName">
-                                                    {coupon.content}
+                                                    <p dangerouslySetInnerHTML={{ __html: coupon.content }}/>
                                                 </Link>
                                             </div>
                                             <div className="dealBtnBox">
