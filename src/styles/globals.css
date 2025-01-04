@@ -858,9 +858,11 @@ border: 1px solid transparent;
 margin: 0rem auto;
 background-color: transparent;
 padding: 0;
+width: 100%;
 }
 .footer-box .subscribe{
 background-color: transparent;
+padding: 0;
 }
 .subscribe-item form input::placeholder{
 font-weight: 500;
