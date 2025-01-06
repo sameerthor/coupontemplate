@@ -926,3 +926,19 @@ line-height: 1.4;
 .nav .search-box svg{
  fill: #2ec4b6;
  }
+ 
+ .search-box input{
+  font-size: 17px;
+ }
+ .react-search-box-dropdown ul li{
+    font-weight: 500;
+    font-size: 16px;
+ }
+ .search-box span span{
+  height: 100%;
+  width: 30px;
+ }
+ .search-box span span svg{
+ width: 18px;
+ height: 18px;
+ }
