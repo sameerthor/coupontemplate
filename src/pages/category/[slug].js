@@ -10,6 +10,7 @@ import {
     faStar
 } from "@fortawesome/free-solid-svg-icons";
 import arrayShuffle from 'array-shuffle';
+import moment from "moment";
 
 function Category({ category, stores, categories }) {
 
@@ -19,8 +20,14 @@ function Category({ category, stores, categories }) {
     return (
         <>
             <NextSeo
-                title={category.meta_title}
-                description={category.meta_description}
+                title={category.meta_title.replaceAll("%%currentyear%%", moment().format('YYYY'))}
+                description={category.meta_description.replace(
+                    "%%stores%%",
+                    _.map(
+                        category.store_set.results.sort((a, b) => b.coupon_set.length - a.coupon_set.length).slice(0, 3),
+                        'title'
+                    ).join(', ') + "."
+                )}
             />
             <section className="categorySection">
                 <div className="container">
