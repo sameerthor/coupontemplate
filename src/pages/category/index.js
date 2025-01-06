@@ -20,7 +20,7 @@ function CategoryListing({ categories }) {
         if (codeCount > 0) summaryParts.push(`${codeCount} ${codeCount > 1 ? 'Codes' : 'Code'}`);
         if (dealCount > 0) summaryParts.push(`${dealCount} ${dealCount > 1 ? 'Deals' : 'Deal'}`);
       
-        const summary = summaryParts.join(" & ");
+        const summary = summaryParts.join(" | ");
         return summary;
       };
     
@@ -42,7 +42,7 @@ function CategoryListing({ categories }) {
                             </ul>
                         </div>
                     </div>
-                    <div className="row row-cols-3">
+                    <div className="row row-cols-2">
                         {categories.map((item, index) => (
                             <div
                                 className="col-lg-2 col-md-3 col-sm-4 category-box"

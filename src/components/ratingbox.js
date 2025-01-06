@@ -142,7 +142,7 @@ export default function RatingBox({store}) {
                                     {rateAlready !== true &&
                                         <a href="javascript:void(0)" onClick={() => handleSubmit()}>Submit</a>
                                     }
-                                    <a href="javascript:void(0)" data-bs-dismiss="modal"
+                                    <a href="javascript:void(0)" className='dismissBtn' data-bs-dismiss="modal"
                                         aria-label="Close"
                                         onClick={() => { setModalOpen(false); (rateAlready !== true && setUserRating(0)) }}> Cancel</a>
                                 </div>

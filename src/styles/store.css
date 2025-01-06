@@ -1073,6 +1073,11 @@
     vertical-align: middle;
     cursor: pointer;
     letter-spacing: .5px;
+    margin-right: 1rem;
+    border-radius: 4px;
+}
+.modal .storeBtn .dismissBtn{
+    background-color: #6c757e;
 }
 .modal .isWorked{
     margin: .5rem auto;
@@ -1612,4 +1617,21 @@ table>thead>tr>th, table>thead>tr>td {
   }
   .storePage .breadcrumb{
     margin-top: .5rem;
+  }
+  .ratings p{
+    font-weight: 500;
+    font-size: .9rem; 
+    text-align: center;
+  }
+  @media(max-width:600px){
+    .ratings p{
+       font-size: .8rem;
+
+      }
+      .ratings p span{
+        display: block;
+       }
+       .storeHeader .header-thumb {
+        margin-left: 1rem;
+    }
   }
