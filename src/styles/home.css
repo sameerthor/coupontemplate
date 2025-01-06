@@ -30,7 +30,7 @@
  }
 @media(max-width: 600px){
     .homeBanner{
-        padding: 6rem 1rem 2rem 1rem;
+        padding: 5rem .5rem 2rem .5rem;
     }
 }
 /* category */
@@ -367,4 +367,10 @@
 }
 .boxFooter span img{
     margin-right: .2rem;
+ }
+ .carousel .slide a{
+    display: block;
+ }
+ .carousel .slide a img{
+    object-fit: contain;
  }
