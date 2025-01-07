@@ -19,6 +19,7 @@ export default function App({ Component, pageProps }) {
   return (
     <main className={inter.className}>
           <Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
             <style>{dom.css()}</style>
             <script src="/custom.js" defer></script>
           </Head>
