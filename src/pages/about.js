@@ -37,12 +37,7 @@ export default function about({ stores }) {
                         <p>
                             Whether you are buying new tech gadgets, shopping for everyday groceries, filling up your cart with beauty essentials or planning your next vacation, Supercosts assists you in getting the best coupon codes and deals online. 
                         </p>
-                        <p>
-                            We also pride ourselves on our user-friendly platform. We know how hard it can be to scroll through countless deal and coupon code pages. To make things simpler for you, we‘ve designed Savestoday to be intuitive and simple to use. Whether you're shopping on your desktop or your smartphone, you can easily grab the deals you're looking for. 
-                        </p>
-                        <p>
-                            Let's save some money! Join Savestoday now to start saving big on all of your favourite products and services.
-                        </p>
+                        
                         <h2>
                         Why you’ll love it: 
 

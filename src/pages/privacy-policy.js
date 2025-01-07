@@ -34,7 +34,7 @@ export default function about({ stores }) {
                             <li><strong>Personal Information:</strong> Personal information refers to your name, email address, or any other personal details you share with us. This includes any details that you provide when you sign up for our newsletter, create an account or contact us.
 
                             </li>
-                            <li> <strong>Non-Personal Information: </strong> Non-Personal Information: We also gather data automatically while you interact with our website. This includes IP address, the type of your browser, your device information, and location. We may also collect information about the way you are using the site and services offered by us including pages visited, features used, and the duration of your visits.
+                            <li> <strong>Non-Personal Information: </strong> We also gather data automatically while you interact with our website. This includes IP address, the type of your browser, your device information, and location. We may also collect information about the way you are using the site and services offered by us including pages visited, features used, and the duration of your visits.
                             </li> 
                         </ul>
                         <h2>
@@ -70,14 +70,14 @@ export default function about({ stores }) {
 
                         </p>
                         <ul>
-                            <li><strong> Verified</strong> 
-                            Encryption: Using encryption technologies to protect sensitive information.
+                            <li><strong> Encryption: </strong> 
+                             Using encryption technologies to protect sensitive information.
                             </li>
-                            <li><strong> Access Controls:</strong> 
+                            <li><strong> Access Controls: </strong> 
                              Restricting access controls to limit access to your personal information. 
 
                             </li>
-                            <li><strong> Regular Monitoring:</strong> 
+                            <li><strong> Regular Monitoring: </strong> 
                              Regularly monitoring our systems for security vulnerabilities. 
                             </li>
                            
@@ -138,7 +138,7 @@ export default function about({ stores }) {
                             If you have any questions or concerns about our Privacy  or how your data is handled, contact us at <a href="/contact">https://supercosts.com/contact</a>
                         </p>
                         <p>
-                            By using Supercosts, you agree to this Privacy Policy. 
+                            By using Supercosts, you agree to this <a href="/privacy-policy">Privacy Policy</a> 
                         </p>
                     </div>
                 </div>  
