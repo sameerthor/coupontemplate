@@ -100,7 +100,7 @@ export default function Footer() {
                                 </svg>{" "}
                                 Home
                             </Link>
-                            <a href="#">
+                            <a href="/about">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={16}
