@@ -24,3 +24,23 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
+// Function to remove the classes
+function removeNavClasses() {
+    const nav = document.querySelector(".headerNav");
+    if (nav) {
+        nav.classList.remove("openSearch", "openNav");
+    }
+}
+document.addEventListener("click", (event) => {
+    const nav = document.querySelector(".headerNav");
+    if (nav && (nav.classList.contains("openSearch") || nav.classList.contains("openNav"))) {
+        if (!nav.contains(event.target)) {
+            removeNavClasses();
+        }
+    }
+});
+window.addEventListener("scroll", () => {
+    removeNavClasses();
+});
+
