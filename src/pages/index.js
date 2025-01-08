@@ -40,54 +40,54 @@ export default function Home({ categories, stores, blogs }) {
               ))}
             </Carousel> */}
             <Carousel showThumbs={false}>
-                <div>
-                  <a href="/category/clothing-and-accessories">
-                    <Image
-                      src={`/images/banner-1.png`}
-                      width={0}
-                      height={0}
-                      sizes="100vw"
-                      style={{ width: "100%", height: "auto" }}
-                      alt={`fashion`}
-                    />
-                  </a>
-                </div>
-                <div>
-                  <a href="/category/beauty-products">
-                    <Image
-                      src={`/images/banner-2.png`}
-                      width={0}
-                      height={0}
-                      sizes="100vw"
-                      style={{ width: "100%", height: "auto" }}
-                      alt={`beauty-products`}
-                    />
-                  </a>
-                </div>
-                <div>
-                  <a href="/category/lifestyle">
-                    <Image
-                      src={`/images/banner-3.png`}
-                      width={0}
-                      height={0}
-                      sizes="100vw"
-                      style={{ width: "100%", height: "auto" }}
-                      alt={`Life-style`}
-                    />
-                  </a>
-                </div>
-                <div>
-                  <a href="/category/health-and-wellness">
-                    <Image
-                      src={`/images/banner-4.png`}
-                      width={0}
-                      height={0}
-                      sizes="100vw"
-                      style={{ width: "100%", height: "auto" }}
-                      alt={`health and wellness`}
-                    />
-                  </a>
-                </div>
+              <div>
+                <a href="/category/clothing-and-accessories">
+                  <Image
+                    src={`/images/banner-1.png`}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: "100%", height: "auto" }}
+                    alt={`fashion`}
+                  />
+                </a>
+              </div>
+              <div>
+                <a href="/category/beauty-products">
+                  <Image
+                    src={`/images/banner-2.png`}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: "100%", height: "auto" }}
+                    alt={`beauty-products`}
+                  />
+                </a>
+              </div>
+              <div>
+                <a href="/category/lifestyle">
+                  <Image
+                    src={`/images/banner-3.png`}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: "100%", height: "auto" }}
+                    alt={`Life-style`}
+                  />
+                </a>
+              </div>
+              <div>
+                <a href="/category/health-and-wellness">
+                  <Image
+                    src={`/images/banner-4.png`}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: "100%", height: "auto" }}
+                    alt={`health and wellness`}
+                  />
+                </a>
+              </div>
             </Carousel>
           </div>
         </div>
@@ -187,10 +187,10 @@ export default function Home({ categories, stores, blogs }) {
                             ? item.image
                             : "/images/default-placeholder.png"
                         }
-                        width={0}
-                        height={0}
-                        style={{ width: "100%", height: "75px" }}
+                        width={500}
+                        height={375}
                         alt={item.title}
+                        quality={100} // Increase image quality (default is 75)
                       />
                     </Link>
                     <Link href={`/${item.slug}`} className="store-name">
@@ -206,7 +206,7 @@ export default function Home({ categories, stores, blogs }) {
       <section className="container-fluid tranding">
         <div className="container">
           <div className="row tranding-blog">
-          <h2>Trending Blogs</h2>
+            <h2>Trending Blogs</h2>
             {blogs.slice(0, 12).map((item, index) => (
               <div className="col-lg-3 col-md-6 col-sm-12 blog-box" key={index}>
                 <div className="blog-item shadow-sm">
