@@ -43,4 +43,31 @@ document.addEventListener("click", (event) => {
 window.addEventListener("scroll", () => {
     removeNavClasses();
 });
+// show hide comment box
 
+
+
+// nav search
+
+const headerNav = document.querySelector(".headerNav");
+
+
+const searchIcon = document.querySelector("#searchIcon");
+const navOpenBtn = document.querySelector(".navOpenBtn");
+
+searchIcon.addEventListener("click", () => {
+    if (headerNav) {
+       
+        headerNav.classList.remove("openNav");
+        headerNav.classList.add("openSearch");
+    }
+});
+
+
+navOpenBtn.addEventListener("click", () => {
+    if (headerNav) {
+        
+        headerNav.classList.remove("openSearch");
+        headerNav.classList.add("openNav");
+    }
+});
