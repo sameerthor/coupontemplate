@@ -1172,3 +1172,6 @@
         font-size: .7rem;
     }
 }
+.stars svg path{
+    fill: #fbc000;
+}

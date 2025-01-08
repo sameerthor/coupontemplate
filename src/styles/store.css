@@ -1617,6 +1617,7 @@ table>thead>tr>th, table>thead>tr>td {
   }
   .storePage .breadcrumb{
     margin-top: .5rem;
+    gap: 5px;
   }
   .ratings p{
     font-weight: 500;
