@@ -947,3 +947,18 @@ line-height: 1.4;
       top: calc(100% + -50px);
   }
 }
+
+.consent-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.consent-banner .btn {
+  margin-left: 10px;
+}
