@@ -15,21 +15,26 @@ import Footer from "@/components/footer";
 const inter = Montserrat({ subsets: ['latin'] });
 
 export default function App({ Component, pageProps }) {
-  const [hasConsent, setHasConsent] = useState(false);
+  const [hasConsent, setHasConsent] = useState(null); // null for undecided
 
   useEffect(() => {
-    window.bootstrap = require("bootstrap/dist/js/bootstrap.bundle.min.js");
-
-    // Check for Google Analytics consent
+    // Check for Google Analytics consent in localStorage
     const consent = localStorage.getItem('ga_consent');
     if (consent === 'granted') {
       setHasConsent(true);
+    } else if (consent === 'denied') {
+      setHasConsent(false);
     }
   }, []);
 
-  const handleConsent = () => {
+  const handleAccept = () => {
     setHasConsent(true);
     localStorage.setItem('ga_consent', 'granted');
+  };
+
+  const handleReject = () => {
+    setHasConsent(false);
+    localStorage.setItem('ga_consent', 'denied');
   };
 
   return (
@@ -63,13 +68,14 @@ export default function App({ Component, pageProps }) {
       )}
 
       {/* Consent Banner */}
-      {!hasConsent && (
+      {hasConsent === null && (
         <div className="consent-banner">
-          <p>
-            We use cookies to enhance your experience. Do you consent to analytics tracking?
-          </p>
-          <button onClick={handleConsent} className="btn btn-primary">
+          <p>We use cookies to enhance your experience. Do you consent to analytics tracking?</p>
+          <button onClick={handleAccept} className="btn btn-primary">
             Accept
+          </button>
+          <button onClick={handleReject} className="btn btn-secondary">
+            Reject
           </button>
         </div>
       )}
