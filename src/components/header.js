@@ -68,6 +68,11 @@ export default function Header() {
                         </Link>
                     </li>
                     <li>
+                        <Link className="link-hover" href="/blog">
+                            Blog
+                        </Link>
+                    </li>
+                    {/* <li>
                         <div className="dropdown dropdown-hover">
                             <a
                                 className="dropdown-toggle"
@@ -93,7 +98,7 @@ export default function Header() {
                                 )}
                             </ul>
                         </div>
-                    </li>
+                    </li> */}
                     <li>
                         <Link className="link-hover" href="/category">
                             Category
