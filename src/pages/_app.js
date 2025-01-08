@@ -19,6 +19,8 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     // Check for Google Analytics consent in localStorage
+    window.bootstrap = require("bootstrap/dist/js/bootstrap.bundle.min.js");
+
     const consent = localStorage.getItem('ga_consent');
     if (consent === 'granted') {
       setHasConsent(true);

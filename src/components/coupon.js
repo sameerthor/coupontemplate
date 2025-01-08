@@ -5,9 +5,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
-export default function Coupon({ store, coupon_data }) {
+export default function Coupon({ store, coupon_data, tot_count, numb }) {
     const [modalOpen, setModalOpen] = useState(false);
     const [copytext, setCopyText] = useState("Copy code");
+    const isUnverified = (coupon_data.coupon_type === "code" ? false : (numb > tot_count - 3));
+
     return (
         <>
             <div key={coupon_data.id} className="coupon-item">
@@ -15,19 +17,19 @@ export default function Coupon({ store, coupon_data }) {
                     <span className="storeName">{store.title} Coupon</span>
                     <span className="verifiedIcon">
                         <Image
-                            src="/images/verified.svg"
-                            alt="verified-icon"
+                            src={isUnverified ? "/images/unverified.svg" : "/images/verified.svg"}
+                            alt={isUnverified ? "unverified-icon" : "verified-icon"}
                             width={14}
                             height={14}
                         />
-                        <small>Verified</small>
+                        <small> {isUnverified ? 'Unverified' : 'Verified'}</small>
                     </span>
                 </div>
                 <div className="couponInfo">
                     <div className="latest-coupon">
                         <div className="coupon-title">{coupon_data.discount_value || "Best Deal"}</div>
                         {/* <p className="couponDesc">{coupon_data.content}</p> */}
-                        <p className="couponDesc" dangerouslySetInnerHTML={{ __html: coupon_data.content }}/>
+                        <p className="couponDesc" dangerouslySetInnerHTML={{ __html: coupon_data.content }} />
                     </div>
                     <div className="coupon-detail coupon-button-type">
                         {coupon_data.coupon_type === "code" ? (
