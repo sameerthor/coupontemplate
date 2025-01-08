@@ -24,6 +24,19 @@ export default function App({ Component, pageProps }) {
           </Head>
 
       <Header />
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-S35JBVCMSK"
+        strategy="lazyOnload" defer
+      />
+      <Script id="google-analytics" strategy="lazyOnload" defer>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-S35JBVCMSK');
+        `}
+      </Script>
       <Component {...pageProps} />
       <Script
         id="custom-js"
