@@ -45,7 +45,7 @@ export default function App({ Component, pageProps }) {
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
         />
         <style>{dom.css()}</style>
-        <script src="custom.js" defer></script>
+        <script src="/custom.js" defer></script>
       </Head>
 
       <Header />
