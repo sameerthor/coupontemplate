@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import Coupon from "@/components/coupon";
@@ -89,6 +90,11 @@ const StorePage = ({ store, relStores, simCat }) => {
             }
         })
     }
+    const [showCommentBox, setShowCommentBox] = useState(false);
+    const toggleCommentBox = () => {
+        setShowCommentBox(!showCommentBox);
+      };
+    
     return (
         <>
             <NextSeo
@@ -264,6 +270,66 @@ const StorePage = ({ store, relStores, simCat }) => {
                             </>
                         )}
                     </div>
+                     {/* comment */}
+                     <div className="comment-box">
+          <div id="showComment">
+            <button onClick={toggleCommentBox} className="btn btn-primary">
+                {showCommentBox ? 'Hide Comment Box' : 'Leave a Comment'}
+            </button>
+          </div>
+          {showCommentBox && (
+            <div className="commentbox">
+            <div className="row comment mx-auto">
+                <h3>Let other know how much you saved</h3>
+                <p>
+                    Your email address will not be published. Required fields are
+                    marked <span>*</span>
+                </p>
+            </div>
+            <div className="row input mx-auto">
+                <form className="d-block" role="post">
+                    <textarea
+                        name=""
+                        className="col-sm-12 col-md-10 col-lg-10 d-block"
+                        rows={10}
+                        placeholder="Input your thought ..."
+                        required=""
+                        defaultValue={""}
+                    />
+                    <label htmlFor="name" className="d-block">
+                        <i className="fa-regular fa-user" /> Name <span>*</span>
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        required=""
+                        className="col-sm-12 col-md-10 col-lg-10 d-block"
+                    />
+                    <label htmlFor="email" className="d-block">
+                        <i className="fa-regular fa-envelope" /> Email <span>*</span>
+                    </label>
+                    <input
+                        type="email"
+                        className="col-sm-12 col-md-10 col-lg-10 d-block"
+                        placeholder="Enter your email address"
+                        required=""
+                    />
+                    <label htmlFor="url" className="d-block">
+                        <i className="fa-solid fa-globe" /> Website
+                    </label>
+                    <input
+                        type="text"
+                        className="col-sm-12 col-md-10 col-lg-10 d-block"
+                        placeholder="website url"
+                    />
+                    <button type="submit" onclick="">
+                        Post Comment
+                    </button>
+                </form>
+            </div>
+        </div>
+          )}
+        </div>
                 </div>
             </section>
         </>

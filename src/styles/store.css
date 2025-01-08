@@ -1636,3 +1636,115 @@ table>thead>tr>th, table>thead>tr>td {
         margin-left: 1rem;
     }
   }
+
+    /* ====================Comment Box================ */
+.commentbox{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 0;
+}
+.comment h3{
+    font-weight: 600;
+    font-size: 1.6rem;
+    letter-spacing: .5px;
+}
+.comment p{
+    font-size: 1rem;
+    text-align: justify;
+    margin-bottom: .6rem;
+    margin-top: .5rem;
+}
+.commentbox p span{
+    color: #ff0000;
+}
+.commentbox label{
+   margin-bottom: .5rem;
+   padding-left: .3rem;
+   font-weight: 500;
+   font-size: .9rem;
+   font-family: 'Montserrat', sans-serif;
+}
+.commentbox label span{
+    color: #ff0000;
+}
+.input form textarea{
+    margin-bottom: 1.2rem;
+    padding-top: .5rem;
+}
+.commentbox .input form input, textarea{
+    outline: none;
+    padding-left: .9rem;
+    border: 1px solid #e2e2e3;
+    margin-bottom: 1.5rem;
+    font-size: .85rem;
+    letter-spacing: .5px;
+    color: #666;
+    font-weight: 500;
+}
+.commentbox .input form input{
+    height: 2.2rem;
+    font-size: .85rem;
+    letter-spacing: .5px;
+    color: #666;
+    font-weight: 500;
+}
+.commentbox .input form input:focus{
+   border: 1px solid #2ec4b6;
+}
+.commentbox .input form textarea:focus{
+    border: 1px solid #2ec4b6;
+ }
+@media (max-width: 700px){
+    .input form input, textarea{
+        width: 100%;
+    }  
+    .input form textarea{
+        width: 100%;
+        height: 9.4rem;
+    } 
+}
+.commentbox .input form button{
+    border: none;
+    background-color: #2ec4b6;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    font-size: .9rem;
+    font-weight: 500;
+    letter-spacing: .5px;
+    margin-bottom: 1rem;
+    padding: .55rem 1rem;
+    cursor: pointer;
+}
+.commentbox{
+     border: 1px solid #D9D7D7;
+    margin-bottom: 2.5rem;
+}
+@media(max-width:600px){
+    .comment h3{
+        font-size: 1.2rem;
+    }
+    .comment p{
+        font-size: .8rem;
+    }
+    .commentbox label{
+        font-size: .8rem;
+     }
+     .commentbox .input form input, textarea{
+        font-size: .8rem;
+    }
+}
+#showComment{
+    margin-bottom: 1rem;
+}
+#showComment button{
+    border: none;
+    outline: none;
+    background-color: #2ec4b6;
+    color: #000;
+    font-weight: 500;
+    border-radius: 4rem;
+    padding: .5rem 1rem;
+}
+/* =========== */

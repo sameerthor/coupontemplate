@@ -43,4 +43,32 @@ document.addEventListener("click", (event) => {
 window.addEventListener("scroll", () => {
     removeNavClasses();
 });
+// show hide comment box
 
+
+
+// nav search
+// Select the nav element
+const headerNav = document.querySelector(".headerNav");
+
+// Select the buttons
+const searchIcon = document.querySelector("#searchIcon");
+const navOpenBtn = document.querySelector(".navOpenBtn");
+
+// Add click event listener for the search button
+searchIcon.addEventListener("click", () => {
+    if (headerNav) {
+        // Remove .openNav and add .openSearch
+        headerNav.classList.remove("openNav");
+        headerNav.classList.add("openSearch");
+    }
+});
+
+// Add click event listener for the navigation open button
+navOpenBtn.addEventListener("click", () => {
+    if (headerNav) {
+        // Remove .openSearch and add .openNav
+        headerNav.classList.remove("openSearch");
+        headerNav.classList.add("openNav");
+    }
+});
