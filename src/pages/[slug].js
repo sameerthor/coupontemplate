@@ -175,7 +175,7 @@ const StorePage = ({ store, relStores, simCat }) => {
                             {store.coupon_set.length > 0 && store.coupon_set.sort(function (a, b) {
                                 return a.coupon_type !== null ? a.coupon_type.localeCompare(b.coupon_type) : a;
                             }).map((item, index) =>
-                                <Coupon key={index} store={_.omit(store, 'coupon_set')} coupon_data={item} />
+                                <Coupon key={index} store={_.omit(store, 'coupon_set')} coupon_data={item} tot_count={store.coupon_set.length} numb={index+1} />
                             )}
 
                         </div>
