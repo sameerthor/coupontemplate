@@ -80,7 +80,13 @@ export default function about({ stores }) {
                             </li>
                            
                         </ul>
-                      
+                        <h2>
+                        Third-Party Links
+                        </h2>
+                        <p>
+                        Supercosts contains links to third party websites or services. We are not responsible for the content, privacy policies or practices of these third-party sites. Your interactions with these sites are solely between you and the third-party. 
+
+                        </p>
                         <h2>
                         Intellectual Property Rights
                         </h2>
