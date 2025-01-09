@@ -247,9 +247,7 @@ export default function Footer() {
                                 Amazon.com, Inc. or its affiliates.
                             </p>
                             <p className="lovtxt">
-                                Made with love ❤️ from UNited Kingdom. Company name - COUPONSHOP
-                                LIMITED Company address - Hunter House 150 Hutton Road, Shenfield,
-                                Brentwood, Essex, CM15 8NL, Company number 08532926
+                                Made with love ❤️ from UNited Kingdom.
                             </p>
                             <p className="lovtxt">
                                 Copyright © 2024 SuperCosts.com All Right Reserved
