@@ -244,8 +244,7 @@ export async function getStaticProps({ params }) {
             notFound: true
         };
     }
-    const resStores = await fetch(`https://backend.supercosts.com/stores/?search=${category.id}&ordering=-id`)
-    const stores = await resStores.json()
+    const stores = category.store_set.results;
 
     const resCategories = await fetch(`https://backend.supercosts.com/categories/?ordering=-id`)
     const categoriesData = await resCategories.json()
