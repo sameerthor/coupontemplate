@@ -115,7 +115,7 @@ const StorePage = ({ store, relStores, simCat }) => {
                 <div className="container">
                 <div className='affiDisc'>
                     <p>
-                    Supercosts may earn a commission when you use coupons on this page. <a href='#'>Learn More</a>
+                    Supercosts may earn a commission when you use coupons on this page. <a href='/affiliate-disclosure'>Learn More</a>
                     </p>
                 </div>
                     <div className="row">
