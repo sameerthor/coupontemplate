@@ -357,6 +357,7 @@ export async function getStaticProps({ params }) {
     if (store.category[0]) {
         const resRelStores = await fetch(`https://backend.supercosts.com/stores/?category__id=${store.category[0].id}&ordering=-id`)
         var relStores = await resRelStores.json()
+        relStores = relStores.filter((s) => s.id !== store.id);
         relStores = _.shuffle(relStores).slice(0, 12)
         if (relStores.length <= 3) {
             const rescat = await fetch(`https://backend.supercosts.com/categories/?limit=4&offset=${Math.ceil(parseInt(store.category[0].id) / 4)}`)
