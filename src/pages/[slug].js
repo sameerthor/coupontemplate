@@ -113,6 +113,11 @@ const StorePage = ({ store, relStores, simCat }) => {
             {/* Breadcrumb */}
             <section className="storePage">
                 <div className="container">
+                <div className='affiDisc'>
+                    <p>
+                    Supercosts may earn a commission when you use coupons on this page. <a href='/affiliate-disclosure'>Learn More</a>
+                    </p>
+                </div>
                     <div className="row">
                         <div className="col-md-12 p-0">
                             <div className="breadcrumb">

@@ -1748,3 +1748,22 @@ table>thead>tr>th, table>thead>tr>td {
     padding: .5rem 1rem;
 }
 /* =========== */
+.affiDisc p{
+    text-align: center;
+    font-weight: 500;
+    color: #2e2e2e;
+    font-size: .65rem;
+    letter-spacing: .4px;
+}
+.affiDisc p a{
+    color: #1a0dab;
+ }
+ .affiDisc p a:hover{
+    text-decoration: underline;
+ }
+@media(max-width: 600px){
+    .affiDisc p{
+       font-size: .46rem;
+       padding: 0 .5rem;
+    }
+}
