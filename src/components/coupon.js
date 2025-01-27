@@ -10,6 +10,36 @@ export default function Coupon({ store, coupon_data, tot_count, numb }) {
     const [copytext, setCopyText] = useState("Copy code");
     const isUnverified = (coupon_data.coupon_type === "code" ? false : (numb > tot_count - 3));
 
+
+
+    setTimeout(async () => {
+        if (process.browser) {
+            let c_id = localStorage.getItem("copied_code");
+            if (c_id == coupon_data.id) {
+
+                await setModalOpen(true);
+                setTimeout(() => {
+                    // Determine the modal to open based on coupon type
+                    let modalElement = coupon_data.coupon_type === "code"
+                        ? document.getElementById('getCode' + c_id)
+                        : document.getElementById('getDeal' + c_id);
+
+                    if (modalElement) {
+                        console.log("in")
+                        const modal = new bootstrap.Modal(modalElement);
+                        modal.show(); // Show the modal
+                    }
+
+                }, 500)
+
+
+                localStorage.removeItem("copied_code");
+            }
+        }
+    }, 500);
+
+
+
     return (
         <>
             <div key={coupon_data.id} className="coupon-item">
@@ -35,9 +65,26 @@ export default function Coupon({ store, coupon_data, tot_count, numb }) {
                         {coupon_data.coupon_type === "code" ? (
                             <a
                                 onClick={async (e) => {
-                                    ; await setModalOpen(true); window.open(store.affiliate_url, "_blank");
-                                    let modal = new bootstrap.Modal(document.getElementById('getCode'));
-                                    modal.show();
+                                    // Set the copied_code in localStorage (no need to await as it's synchronous)
+                                    localStorage.setItem('copied_code', coupon_data.id);
+
+                                    // Copy the coupon code to the clipboard
+                                    navigator.clipboard.writeText(coupon_data.coupon_code).then(() => {
+                                        //                                        console.log("Coupon code copied to clipboard");
+                                    }).catch((error) => {
+                                        console.error("Error copying to clipboard: ", error);
+                                    });
+
+                                    // Open the store's page in a new tab
+                                    window.open(`/${store.slug}/#c=${coupon_data.id}`, "_blank");
+
+                                    // Log the affiliate URL
+
+                                    // Open the affiliate URL in the same window after a short delay (to ensure proper sequence)
+                                    setTimeout(() => {
+                                        window.open(store.affiliate_url, "_self");
+                                    }, 100);  // Delay added to ensure actions don't overlap
+
                                 }}
                                 rel="nofollow"
                                 data-type="code"
@@ -51,9 +98,12 @@ export default function Coupon({ store, coupon_data, tot_count, numb }) {
                         ) : (
                             <a
                                 onClick={async (e) => {
-                                    ; await setModalOpen(true); window.open(store.affiliate_url, "_blank");
-                                    let modal = new bootstrap.Modal(document.getElementById('getDeal'));
-                                    modal.show();
+
+                                    await localStorage.setItem('copied_code', coupon_data.id)
+                                    window.open(`/${store.slug}`, "_blank");
+                                    setTimeout(() => {
+                                        window.open(store.affiliate_url, "_self");
+                                    }, 100);
                                 }}
                                 rel="nofollow"
                                 data-type="sale"
@@ -70,7 +120,7 @@ export default function Coupon({ store, coupon_data, tot_count, numb }) {
                 {modalOpen && coupon_data.coupon_type === "code" && (
                     <div
                         className="modal fade"
-                        id="getCode"
+                        id={`getCode${coupon_data.id}`}
                         tabIndex={-1}
                         aria-labelledby="exampleModalLabel"
                         aria-hidden="true"
@@ -167,7 +217,7 @@ export default function Coupon({ store, coupon_data, tot_count, numb }) {
                 {(coupon_data.coupon_type == "deal" && modalOpen) &&
                     <div
                         className="modal fade"
-                        id="getDeal"
+                        id={`getDeal${coupon_data.id}`}
                         tabIndex={-1}
                         aria-labelledby="exampleModalLabel"
                         aria-hidden="true"
