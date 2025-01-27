@@ -143,6 +143,26 @@
     line-height: 1.4;
     text-align: left;
  }
+ .blogContent .blogcontentData p{
+    color: #6b7280;
+    font-size: .95rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    text-align: left;
+ }
+ .blogContent .blogcontentData ul {
+   padding-left: 25px;
+ }
+ .blogContent .blogcontentData ul li{
+    color: #6b7280;
+    font-size: .95rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+    line-height: 1.4;
+    text-align: left;
+    list-style-type: disc;
+ }
  strong{
     font-weight: 700;
  }
