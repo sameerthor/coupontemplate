@@ -136,7 +136,7 @@
      }
 }
 .blogContent .blogcontentData .blogPara{
-    color: #6b7280;
+    color: #1a1a1b;
     font-size: .95rem;
     font-weight: 500;
     margin-bottom: 1rem;
@@ -144,7 +144,7 @@
     text-align: left;
  }
  .blogContent .blogcontentData p{
-    color: #6b7280;
+    color: #1a1a1b;
     font-size: .95rem;
     font-weight: 500;
     margin-bottom: 1rem;
@@ -155,7 +155,7 @@
    padding-left: 25px;
  }
  .blogContent .blogcontentData ul li{
-    color: #6b7280;
+    color: #1a1a1b;
     font-size: .95rem;
     font-weight: 500;
     margin-bottom: .5rem;
@@ -186,7 +186,7 @@
  }
  .blogContent .blogcontentData ul li{
     list-style-type: disc;
-    color: #6b7280;
+    color: #1a1a1b;
     font-size: .95rem;
     font-weight: 500;
     margin-bottom: .5rem;
@@ -198,13 +198,19 @@
  }
  .blogContent .blogcontentData ol li{
     list-style-type: number;
-    color: #6b7280;
+    color: #1a1a1b;
     font-size: .95rem;
     font-weight: 500;
     margin-bottom: .5rem;
     line-height: 1.4;
     text-align: left;
  }
+ .blogContent .blogcontentData ul li p{
+  margin-bottom: 0;
+ }
+ .blogContent .blogcontentData ol li p{
+    margin-bottom: 0;
+}
  .blogContent .blogcontentData ol {
     padding-left: 1rem;
  }
