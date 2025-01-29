@@ -105,15 +105,14 @@ function blogDetail({ post, posts }) {
                                     <span className="authorName">Freida McFadden</span>
                                 </div>
                                 <div className="firstImage">
-                                    {/* <img src={`${item.Image}`} alt="" /> */}
                                     <Image 
-        src={post.Image} 
-        alt="Featured Image" 
-        width={500} // Adjust width as needed
-        height={300} // Adjust height as needed
-        layout="responsive" // Ensures responsiveness
-        priority // Loads the image faster
-      />
+                                        src={`${post.image}`}
+                                        alt="Featured Image" 
+                                        width={0} 
+                                        height={0} 
+                                        layout="responsive"
+                                        priority 
+                                    />
                                 </div>
                                 <div className="blogcontentData" dangerouslySetInnerHTML={
                                     { __html: post.body }}>

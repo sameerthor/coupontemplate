@@ -128,6 +128,7 @@
     max-width: 100%;
     display: block;
     object-fit: contain;
+    max-height: 300px;
  }
  .blogContent a{
     color: #4242f4;
