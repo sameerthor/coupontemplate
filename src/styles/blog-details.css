@@ -153,21 +153,10 @@
     margin-bottom: 1rem;
     line-height: 1.4;
     text-align: left;
+    border: 2px solid red;
  }
  .blogContent .blogcontentData ul {
    padding-left: 25px;
- }
- .blogContent .blogcontentData ol {
-    padding-left: 25px;
-  }
-  .blogContent .blogcontentData ol li{
-    color: #1a1a1b;
-    font-size: .95rem;
-    font-weight: 500;
-    margin-bottom: .5rem;
-    line-height: 1.4;
-    text-align: left;
-    list-style-type: decimal;
  }
  .blogContent .blogcontentData ul li{
     color: #1a1a1b;
@@ -520,3 +509,15 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+.blogContent .blogcontentData ol {
+ padding-left: 25px;
+ }
+ .blogContent .blogcontentData ol li{
+    color: #1a1a1b;
+    font-size: .95rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+    line-height: 1.4;
+    text-align: left;
+    list-style-type: decimal;
+ }
