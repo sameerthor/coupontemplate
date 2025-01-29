@@ -36,13 +36,16 @@ function Blog({ allPosts }) {
                                 </h2>
                                 <div className="listingImage">
                                     <Link href={`/blog/${item.slug}`}>
-                                        <img src={`${item.image}`} alt="" />
+                                        <img src={`${item.image}`} alt="featured-image" />
                                     </Link>
                                 </div>
-                                <div className="blogDesc" dangerouslySetInnerHTML={
+                                {/* <div className="blogDesc" dangerouslySetInnerHTML={
                                     { __html: item.body }} >
 
-                                </div>
+                                </div> */}
+                                 <div className="blogDesc">
+                                     <p>{item.meta_title}</p>
+                                 </div>
                             </div>
                         )}
                         <div className="pagination">
