@@ -129,6 +129,9 @@
     display: block;
     object-fit: contain;
  }
+ .blogContent a{
+    color: #4242f4;
+ }
 @media(max-width: 600px){
     .blogContent .firstImage img{
         max-width: 99%;
@@ -153,6 +156,18 @@
  }
  .blogContent .blogcontentData ul {
    padding-left: 25px;
+ }
+ .blogContent .blogcontentData ol {
+    padding-left: 25px;
+  }
+  .blogContent .blogcontentData ol li{
+    color: #1a1a1b;
+    font-size: .95rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+    line-height: 1.4;
+    text-align: left;
+    list-style-type: decimal;
  }
  .blogContent .blogcontentData ul li{
     color: #1a1a1b;
