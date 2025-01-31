@@ -209,8 +209,8 @@ export default function Home({ categories, stores, blogs }) {
             <h2>Trending Blogs</h2>
             {blogs.slice(0, 12).map((item, index) => (
               <div className="col-lg-3 col-md-6 col-sm-12 blog-box" key={index}>
-                <div className="blog-item shadow-sm">
-                  <Link href={`/blog/${item.slug}`}>
+                <Link href={`/blog/${item.slug}`} className="blog-item shadow-sm">
+                  <span>
                     <Image
                       src={
                         validImageSrc(item.image)
@@ -221,12 +221,12 @@ export default function Home({ categories, stores, blogs }) {
                       width={100}
                       height={100}
                     />
-                  </Link>
+                  </span>
                   <p>{item.meta_description}</p>
                   <span className="date">
                     {moment(item.updated_at).format("LL")}
                   </span>
-                </div>
+                </Link>
               </div>
             ))}
           </div>
