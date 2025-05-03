@@ -18,7 +18,7 @@ function CategoryListing({ categories }) {
         // Generate the summary string
         const summaryParts = [];
         if (codeCount > 0) summaryParts.push(`${codeCount} ${codeCount > 1 ? 'Codes' : 'Code'}`);
-        if (dealCount > 0) summaryParts.push(`${dealCount} ${dealCount > 1 ? 'Deals' : 'Deal'}`);
+        // if (dealCount > 0) summaryParts.push(`${dealCount} ${dealCount > 1 ? 'Deals' : 'Deal'}`);
       
         const summary = summaryParts.join(" | ");
         return summary;

@@ -150,8 +150,8 @@ const StorePage = ({ store, relStores, simCat }) => {
                                         {store.store_h1.replace("%%Year%%", moment().format('YYYY'))}
                                     </h1>
                                     <h2 className="dealAvl">
-                                        {codeCount} {codeCount === 1 ? "Code" : "Codes"} &amp;{" "}
-                                        {dealCount} {dealCount === 1 ? "Deal" : "Deals"} available
+                                        {codeCount} {codeCount === 1 ? "Code" : "Codes"} available
+                                        {/* {dealCount} {dealCount === 1 ? "Deal" : "Deals"} available */}
                                     </h2>
                                 </div>
                                 <aside className="col-4">
