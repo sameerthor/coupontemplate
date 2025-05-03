@@ -146,7 +146,7 @@ export default function Home({ categories, stores, blogs }) {
                         />
                         <div className="storeInfo text-center">
                           <p>{item.seo_description}</p>
-                          <span>Get Deal</span>
+                          <div class="angled-button">************************<span class="btn-angle">Show Code</span></div>
                         </div>
                       </div>
                       <div className="boxFooter">
