@@ -107,12 +107,10 @@ export default function Coupon({ store, coupon_data, tot_count, numb }) {
                                 }}
                                 rel="nofollow"
                                 data-type="sale"
-                                className="coupon-code coupon-button"
+                                className="coupon-deal coupon-button"
                                 href="javscript:void()"
                             >
-                               
-                                <span class="code-text" rel="nofollow">*****************</span>
-                                <span class="get-code">Show Code</span>
+                                Get Deal <FontAwesomeIcon icon={faCartShopping} />
                             </a>
                         )}
                     </div>

@@ -446,6 +446,7 @@
     width: 100%;
     overflow: hidden;
     margin-left: 3.5rem;
+    font-size: 1rem;
 }
 .coupon-item [data-tooltip][data-inverted]::before {
     font-size: 12px;
@@ -464,6 +465,7 @@
     transition: all 0.5s ease;
     min-width: 55%;
     text-align: left;
+    
 }
 .coupon-button-type .coupon-code .get-code:after {
     content: "";
@@ -1766,4 +1768,7 @@ table>thead>tr>th, table>thead>tr>td {
        font-size: .46rem;
        padding: 0 .5rem;
     }
+}
+.coupon-button-type .coupon-code:hover .get-code{
+  left: -15px;
 }
