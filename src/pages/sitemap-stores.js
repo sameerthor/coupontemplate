@@ -120,3 +120,4 @@ export async function getStaticProps() {
         revalidate: 60, // rebuild every 1 min (adjust as needed)
     };
 }
+// ignore this line
