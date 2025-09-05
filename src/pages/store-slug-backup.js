@@ -344,114 +344,70 @@ const StorePage = ({ store, relStores, simCat }) => {
 export default StorePage;
 
 
-
 export async function getStaticProps({ params }) {
-    let store = null;
-    let relStores = [];
-    let simCat = [];
-
-    try {
-        const res = await fetch(`https://backend.supercosts.com/stores/${params.slug}/`);
-
-        if (!res.ok) {
-            console.error(`❌ API returned ${res.status} for slug: ${params.slug}`);
-            return { notFound: true };
-        }
-
-        try {
-            store = await res.json();
-        } catch (e) {
-            console.error(`❌ Invalid JSON for slug: ${params.slug}`);
-            return { notFound: true };
-        }
-
-        if (store?.detail) {
-            return { notFound: true };
-        }
-
-        // ✅ Coupon title adjustments
-        if (Array.isArray(store.coupon_set)) {
-            store.coupon_set = store.coupon_set.map((coupon) => {
-                if (coupon.title.includes("$")) {
-                    return { ...coupon, title: "Best Deal" };
-                }
-                return coupon;
-            });
-        }
-
-        // ✅ Related stores & categories
-        if (store.category?.[0]) {
-            const resRelStores = await fetch(
-                `https://backend.supercosts.com/stores/?category__id=${store.category[0].id}&ordering=-id`
-            );
-            let relStoresData = await resRelStores.json();
-
-            relStores = (relStoresData || []).filter((s) => s.id !== store.id);
-            relStores = _.shuffle(relStores).slice(0, 12);
-
-            if (relStores.length <= 3) {
-                const resCat = await fetch(
-                    `https://backend.supercosts.com/categories/?limit=4&offset=${Math.ceil(
-                        parseInt(store.category[0].id) / 4
-                    )}`
-                );
-                simCat = await resCat.json();
-            }
-        }
-
-        // ✅ Store description replacements (safe)
-        if (store.store_description) {
-            const store_names = relStores
-                .filter((f) => f.id !== store.id)
-                .slice(0, 2)
-                .map((item) => `<a href="/${item.slug}">${item.title}</a>`);
-
-            const firstCouponTitle = store.coupon_set?.[0]?.title || "";
-            const firstCouponCode =
-                store.coupon_set?.find((x) => x.coupon_type === "code")?.coupon_code || "";
-            const totalCoupons = store.coupon_set?.length || 0;
-
-            store.store_description = store.store_description
-                .replaceAll("%%storename%%", store.title)
-                .replaceAll("%percentage% off", firstCouponTitle)
-                .replaceAll("%percentage% Off", firstCouponTitle)
-                .replaceAll("%percentage% OFF", firstCouponTitle)
-                .replaceAll("%percentage%", firstCouponTitle)
-                .replace(/XXX/g, firstCouponCode)
-                .replace(/XX/g, totalCoupons)
-                .replaceAll("%%currentmonth%%", moment().format("MMMM"))
-                .replaceAll("%%currentyear%%", moment().format("YYYY"))
-                .replaceAll(
-                    /%%categorystore%% and %%categorystore%%|%categorystore%, %categorystore%, and %categorystore%|%categorystore%, %categorystore%|%categorystore% and %categorystore%|%%categorystore%%, %%categorystore%%|%categorystore%, %categorystore%, %categorystore%|%categorystore% %categorystore%, %categorystore%|%categorystore% %categorystore% %categorystore%|%categorystore% %categorystore% and %categorystore%/gi,
-                    store_names.join(", ")
-                );
-        }
-
-        // ✅ Extra info replacements
-        if (store.extra_info) {
-            const firstCouponCode =
-                store.coupon_set?.find((x) => x.coupon_type === "code")?.coupon_code || "";
-            const totalCoupons = store.coupon_set?.length || 0;
-
-            store.extra_info = store.extra_info
-                .replace("XXX", firstCouponCode)
-                .replace("XX", totalCoupons);
-        }
-    } catch (error) {
-        console.error("❌ Fetch error:", error);
-        return { notFound: true };
+    const res = await fetch('https://backend.supercosts.com/stores/' + params.slug + '/')
+    var store = await res.json()
+    if (store.detail) {
+        return {
+            notFound: true
+        };
     }
+    store.coupon_set.map(coupon => {
+        if (coupon.title.includes("$")) {
+            return coupon.title = "Best Deal";
+        }
+    });
+
+    var simCat = [];
+    if (store.category[0]) {
+        const resRelStores = await fetch(`https://backend.supercosts.com/stores/?category__id=${store.category[0].id}&ordering=-id`)
+        var relStores = await resRelStores.json()
+        relStores = relStores.filter((s) => s.id !== store.id);
+        relStores = _.shuffle(relStores).slice(0, 12)
+        if (relStores.length <= 3) {
+            const rescat = await fetch(`https://backend.supercosts.com/categories/?limit=4&offset=${Math.ceil(parseInt(store.category[0].id) / 4)}`)
+            simCat = await rescat.json()
+
+        }
+
+    } else {
+        var relStores = [];
+    }
+
+    const store_names = relStores.filter(f => f.id !== store.id).slice(0, 2).map(item => `<a href="/${item.slug}">${item.title}</a>`)
+    store.store_description = store.store_description.replaceAll("%%storename%%", store.title);
+    store.store_description = store.store_description.replaceAll("%pe­rcentage% off", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%percentage% off", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%pe­rcentage% Off", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%percentage% Off", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%pe­rcentage% OFF", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%percentage% OFF", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%pe­rcentage%", store.coupon_set[0].title);
+    store.store_description = store.store_description.replaceAll("%percentage%", store.coupon_set[0].title);
+    store.store_description = store.store_description.replace(/XXX/, store.coupon_set.filter(x => x.coupon_type == 'code').length > 0 ? store.coupon_set.filter(x => x.coupon_type == 'code')[0].coupon_code : "");
+    store.store_description = store.store_description.replace(/XX/, store.coupon_set.length);
+    store.store_description = store.store_description.replace('XXX', store.coupon_set.filter(x => x.coupon_type == 'code').length > 0 ? store.coupon_set.filter(x => x.coupon_type == 'code')[0].coupon_code : "");
+    store.store_description = store.store_description.replace('XX', store.coupon_set.length);
+    store.extra_info = store.extra_info.replace('XXX', store.coupon_set.filter(x => x.coupon_type == 'code').length > 0 ? store.coupon_set.filter(x => x.coupon_type == 'code')[0].coupon_code : "");
+    store.extra_info = store.extra_info.replace('XX', store.coupon_set.length);
+    store.store_description = store.store_description.replaceAll("%%currentmonth%%", moment().format('MMMM'));
+    store.store_description = store.store_description.replaceAll("%%curre­ntmonth%%", moment().format('MMMM'));
+    store.store_description = store.store_description.replaceAll("%%currentyear%%", moment().format('YYYY'));
+    store.store_description = store.store_description.replaceAll("currentyear%%", moment().format('YYYY'));
+    store.store_description = store.store_description.replaceAll(/%%categorystore%% and %%categorystore%%|%categorystore%, %categorystore%, and %categorystore%|%categorystore%, %categorystore%|%categorystore% and %categorystore%|%%categorystore%%, %%categorystore%%|%categorystore%, %categorystore%, %categorystore%|%categorystore% %categorystore%, %categorystore%|%categorystore% %categorystore% %categorystore%|%categorystore% %categorystore% and %categorystore%/gi, store_names.join(", "));
 
     return {
         props: {
             store,
             relStores,
-            simCat,
+            simCat
         },
-        revalidate: 5, // re-generate every 5 sec
-    };
+        // Next.js will attempt to re-generate the page:
+        // - When a request comes in
+        // - At most once every 10 seconds
+        revalidate: 5, // In seconds
+    }
 }
-
 
 export async function getStaticPaths() {
     const res = await fetch("https://backend.supercosts.com/stores/");
