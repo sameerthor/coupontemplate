@@ -4,53 +4,16 @@ import "@/styles/stores.css";
 import { NextSeo } from "next-seo";
 
 export default function Stores({ initialStoreData }) {
-    const [storeData, setStoreData] = useState(initialStoreData);
-    const [pageNumbers, setPageNumbers] = useState(
-        Object.keys(initialStoreData).reduce((acc, key) => ({ ...acc, [key]: 1 }), {})
-    );
-    const [loading, setLoading] = useState({});
-    const [hasMore, setHasMore] = useState(
-        Object.keys(initialStoreData).reduce((acc, key) => ({
-            ...acc,
-            [key]: initialStoreData[key]?.length > 0, // Check if initial data is available
-        }), {})
-    );
+    const [storeData] = useState(initialStoreData);
 
     const alphabets = ["0-9", ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(97 + i))];
-
-    const handleLoadMore = async (letter) => {
-        if (!hasMore[letter]) return; // If no more data, stop fetching
-
-        setLoading((prev) => ({ ...prev, [letter]: true }));
-        try {
-            const nextPage = pageNumbers[letter] + 1;
-            const response = await fetch(
-                `https://backend.supercosts.com/store-page/alphabetical-filter/?letter=${letter}&page=${nextPage}`
-            );
-            const data = await response.json();
-
-            if (data.detail === "Invalid page.") {
-                setHasMore((prev) => ({ ...prev, [letter]: false }));
-            } else {
-                setStoreData((prev) => ({
-                    ...prev,
-                    [letter]: [...prev[letter], ...(data.results || [])],
-                }));
-                setPageNumbers((prev) => ({ ...prev, [letter]: nextPage }));
-            }
-        } catch (error) {
-            console.error(`Error loading more stores for ${letter}:`, error);
-        } finally {
-            setLoading((prev) => ({ ...prev, [letter]: false }));
-        }
-    };
 
     const calculateCoupons = (coupons) => {
         const dealCount = coupons.filter((x) => x.coupon_type === "deal").length;
         const codeCount = coupons.filter((x) => x.coupon_type === "code").length;
-        const dealText = dealCount > 0 ? `${dealCount} deal${dealCount > 1 ? "s" : ""}` : "";
         const codeText = codeCount > 0 ? `${codeCount} code${codeCount > 1 ? "s" : ""}` : "";
-        return [codeText].filter(Boolean).join(" & ");
+        const dealText = dealCount > 0 ? `${dealCount} deal${dealCount > 1 ? "s" : ""}` : "";
+        return [codeText, dealText].filter(Boolean).join(" & ");
     };
 
     return (
@@ -61,7 +24,7 @@ export default function Stores({ initialStoreData }) {
             />
             <section className="allStorePage">
                 <div className="container">
-                    <div className="storeBox">
+                    <div className="storeBox sitemapStore">
                         <div className="alpha-store">
                             <h1 className="text-center">All Stores</h1>
                             <div>
@@ -97,7 +60,7 @@ export default function Stores({ initialStoreData }) {
                                                 <li key={index}>
                                                     <Link href={`/${item.slug}`}>
                                                         {item.title}
-                                                        <span>{calculateCoupons(item.coupon_set)}</span>
+                                                    
                                                     </Link>
                                                 </li>
                                             ))}
@@ -106,18 +69,6 @@ export default function Stores({ initialStoreData }) {
                                         <p className="no-data-message" style={{ textAlign: "center" }}>
                                             No stores available for {c.toUpperCase()}.
                                         </p>
-                                    )}
-                                    {hasMore[c] && storeData[c].length > 0 && (
-                                        <div className="loadMoreCoupon text-center">
-                                            <button
-                                                onClick={() => handleLoadMore(c)}
-                                                disabled={loading[c] || !hasMore[c]}
-                                                aria-live="polite"
-                                                className="load-more-btn"
-                                            >
-                                                {loading[c] ? "Loading..." : "Load More"}
-                                            </button>
-                                        </div>
                                     )}
                                 </div>
                             ))}
@@ -134,17 +85,30 @@ export async function getStaticProps() {
     const storeData = {};
 
     try {
-        const responses = await Promise.all(
-            alphabets.map((letter) =>
-                fetch(`https://backend.supercosts.com/store-page/alphabetical-filter/?letter=${letter}&page=1`)
-                    .then((res) => res.json())
-                    .then((data) => ({ [letter]: data.results || [] }))
-            )
-        );
+        // fetch all letters in parallel
+        await Promise.all(
+            alphabets.map(async (letter) => {
+                let page = 1;
+                let results = [];
+                let hasMore = true;
 
-        responses.forEach((response) => {
-            Object.assign(storeData, response);
-        });
+                while (hasMore) {
+                    const res = await fetch(
+                        `https://backend.supercosts.com/store-page/alphabetical-filter/?letter=${letter}&page=${page}`
+                    );
+                    const data = await res.json();
+
+                    if (data.results && data.results.length > 0) {
+                        results = [...results, ...data.results];
+                        page++;
+                    } else {
+                        hasMore = false;
+                    }
+                }
+
+                storeData[letter] = results;
+            })
+        );
     } catch (error) {
         console.error("Error fetching data:", error);
     }
@@ -153,6 +117,7 @@ export async function getStaticProps() {
         props: {
             initialStoreData: storeData,
         },
-        revalidate: 10,
+        revalidate: 60, // rebuild every 1 min (adjust as needed)
     };
 }
+

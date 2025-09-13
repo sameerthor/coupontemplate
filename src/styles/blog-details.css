@@ -69,7 +69,7 @@
         flex-direction: column-reverse;
     }
     .blog-details-page{
-        padding: 6rem .8rem;
+        padding: 4.5rem .8rem;
     }
     .blog-details-page .searchBlog .searchBox{
         width: 100%;
@@ -128,6 +128,10 @@
     max-width: 100%;
     display: block;
     object-fit: contain;
+    max-height: 300px;
+ }
+ .blogContent a{
+    color: #4242f4;
  }
 @media(max-width: 600px){
     .blogContent .firstImage img{
@@ -136,12 +140,32 @@
      }
 }
 .blogContent .blogcontentData .blogPara{
-    color: #6b7280;
+    color: #1a1a1b;
     font-size: .95rem;
     font-weight: 500;
     margin-bottom: 1rem;
     line-height: 1.4;
     text-align: left;
+ }
+ .blogContent .blogcontentData p{
+    color: #1a1a1b;
+    font-size: .95rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    text-align: left;
+ }
+ .blogContent .blogcontentData ul {
+   padding-left: 25px;
+ }
+ .blogContent .blogcontentData ul li{
+    color: #1a1a1b;
+    font-size: .95rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+    line-height: 1.4;
+    text-align: left;
+    list-style-type: disc;
  }
  strong{
     font-weight: 700;
@@ -166,7 +190,7 @@
  }
  .blogContent .blogcontentData ul li{
     list-style-type: disc;
-    color: #6b7280;
+    color: #1a1a1b;
     font-size: .95rem;
     font-weight: 500;
     margin-bottom: .5rem;
@@ -178,13 +202,19 @@
  }
  .blogContent .blogcontentData ol li{
     list-style-type: number;
-    color: #6b7280;
+    color: #1a1a1b;
     font-size: .95rem;
     font-weight: 500;
     margin-bottom: .5rem;
     line-height: 1.4;
     text-align: left;
  }
+ .blogContent .blogcontentData ul li p{
+  margin-bottom: 0;
+ }
+ .blogContent .blogcontentData ol li p{
+    margin-bottom: 0;
+}
  .blogContent .blogcontentData ol {
     padding-left: 1rem;
  }
@@ -479,3 +509,44 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+.blogContent .blogcontentData ol {
+ padding-left: 25px;
+ }
+ .blogContent .blogcontentData ol li{
+    color: #1a1a1b;
+    font-size: .95rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+    line-height: 1.4;
+    text-align: left;
+    list-style-type: decimal;
+ }
+ .searchBox{
+    max-width: 100%;
+    width: 400px;
+ }
+ .searchBox .react-search-box-dropdown{
+    max-width: 100%;
+    width: 400px;
+    top: 160px;
+ }
+ .searchBox .react-search-box-dropdown li{
+   font-size: .85rem;
+   line-height: 1.4;
+ }
+ .breadcrumb ul li {
+    margin-right: .5rem;
+    font-size: .8rem;
+    font-weight: 500;
+ }
+ @media(max-width:600px){
+    .searchBox .react-search-box-dropdown{
+        max-width: 100%;
+        width: 340px;
+        top: 170px;
+     }
+     .searchBox .react-search-box-dropdown li{
+       font-size: 17px;
+       height: auto;
+     }
+ }
