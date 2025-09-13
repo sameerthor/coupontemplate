@@ -33,6 +33,10 @@ const nextConfig = {
     {
       source: '/image-sitemap.xml',
       destination: '/sitemap',
+    },
+        {
+      source: '/store-sitemap.xml',
+      destination: '/sitemap/store',
     }
   ]
 };
