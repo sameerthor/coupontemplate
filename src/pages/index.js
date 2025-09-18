@@ -85,6 +85,7 @@ export default function Home({ categories, stores, blogs }) {
             <div className="discountBadge">
                30% OFF
              </div>
+             
               <Image
                 src={'/images/jupiterx.avif'}
                 width={400}
