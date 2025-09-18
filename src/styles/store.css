@@ -262,7 +262,7 @@
 }
 .addressWidget form input:focus{
     box-shadow: none;
-    border: 1px solid  #2ec4b6;
+    border: 1px solid  #1c3d82;
 }
 .addressWidget form button{
     font-weight: 500;
@@ -297,7 +297,7 @@
     display: inline-block;
 }
 .couponFilter  a #all{ 
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     color: #fff;
     font-weight: 700;
     font-size: .7rem;
@@ -362,7 +362,7 @@
     justify-content: center;
 }
 .couponsection .coupon-item .store-thumb:hover {
-    border: 2px solid #2ec4b6;
+    border: 2px solid #1c3d82;
 }
 .store-thumb .thumb-padding {
     display: block;
@@ -456,7 +456,7 @@
     position: absolute;
     left: -2px;
     top: -2px;
-    background: #2ec4b6;
+    background: #1c3d82;
     color: #FFFFFF;
     font-size: 16px;
     padding: 14px 15px 14px 14px;
@@ -473,7 +473,7 @@
     width: 0;
     height: 0;
     border-top: 44px solid transparent;
-    border-left: 44px solid #2ec4b6;
+    border-left: 44px solid #1c3d82;
     position: absolute;
     right: -43px;
     top: 0px;
@@ -526,7 +526,7 @@
 .coupon-button-type .coupon-deal, .coupon-button-type .coupon-print, .coupon-button-type .coupon-code {
     line-height: 1;
     padding: 14px 38px;
-    background: #2ec4b6;
+    background: #1c3d82;
     color: #fff;
     font-size: 16px;
     font-weight: 600;
@@ -699,7 +699,7 @@
     margin-bottom: 1rem;
 }
  .popularStr:hover{
-   border: 2px solid #2ec4b6
+   border: 2px solid #1c3d82
 }
  .popularStr img{
     max-width: 98%;
@@ -849,7 +849,7 @@
 }
 @media(max-width: 800px){
     .storeContent {
-        padding: 0 .5rem;
+        padding: 0;
     }
 }
 @media(max-width: 768px){
@@ -1013,7 +1013,7 @@
     transition: border .3s ease;
   }
   .modal .modal-body .modal-store-logo:hover{
-    border: 1px solid #2ec4b6;
+    border: 1px solid #1c3d82;
   }
   .modal .sendToEmail button{
     border: none;
@@ -1023,7 +1023,7 @@
     letter-spacing: .5px;
   }
   .modal .sendToEmail button:nth-of-type(2){
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
   }
   .modal .modal-body .modal-store-logo img{
     display: block;
@@ -1042,7 +1042,7 @@
     text-transform: uppercase;
     font-weight: 600;
     color: #2e2e2e;
-    border: 2px dashed #2ec4b6;
+    border: 2px dashed #1c3d82;
     font-size: 1.6rem;
   }
   .modal .codeCopyBtn{
@@ -1063,7 +1063,7 @@
     margin: 1rem auto;
   }
   .modal .storeBtn a{
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     font-weight: 600;
     padding: 10px 15px;
     border: none;
@@ -1157,7 +1157,7 @@
 }
 .subscribe-item form button{
     width: 25%;
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     color: #fff;
     padding: .5rem;
     border-radius: 0 4px 4px 0;
@@ -1389,7 +1389,7 @@ table>thead>tr>th, table>thead>tr>td {
 .couponHistory .step .circle {
     width: 10px;
     height: 10px;
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     border: none;
 }
 .couponHistory .step .line {
@@ -1612,7 +1612,7 @@ table>thead>tr>th, table>thead>tr>td {
     font-size: .68rem;
     font-weight: 500;
     color: #fff;
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     padding: .1rem .35rem;
     border-radius: 2px;
     letter-spacing: .4px;
@@ -1692,10 +1692,10 @@ table>thead>tr>th, table>thead>tr>td {
     font-weight: 500;
 }
 .commentbox .input form input:focus{
-   border: 1px solid #2ec4b6;
+   border: 1px solid #1c3d82;
 }
 .commentbox .input form textarea:focus{
-    border: 1px solid #2ec4b6;
+    border: 1px solid #1c3d82;
  }
 @media (max-width: 700px){
     .input form input, textarea{
@@ -1708,7 +1708,7 @@ table>thead>tr>th, table>thead>tr>td {
 }
 .commentbox .input form button{
     border: none;
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     outline: none;
     color: #fff;
     border-radius: 5px;
@@ -1743,8 +1743,8 @@ table>thead>tr>th, table>thead>tr>td {
 #showComment button{
     border: none;
     outline: none;
-    background-color: #2ec4b6;
-    color: #000;
+    background-color: #1c3d82;
+    color: #fff;
     font-weight: 500;
     border-radius: 4rem;
     padding: .5rem 1rem;
@@ -1771,4 +1771,146 @@ table>thead>tr>th, table>thead>tr>td {
 }
 .coupon-button-type .coupon-code:hover .get-code{
   left: -15px;
+}
+
+/* new coupon */
+.coupon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Coupon Card */
+.coupon-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 2px dashed #4a90e2;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.coupon-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Discount Badge */
+.coupon-discount {
+  background: #1c3d82;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 30px 20px;
+  min-width: 180px;
+  text-align: left;
+  clip-path: polygon(0 0, 100% 0, 80% 50%, 100% 100%, 0 100%);
+}
+
+/* Details */
+.coupon-details {
+  padding: 15px 10px;
+  text-align: left;
+  flex: 1;
+}
+
+.coupon-details h3 {
+  font-size: 1.6rem;
+font-weight: 600;
+line-height: 1.4;
+text-align: left;
+color: #2e2e2e;
+}
+
+
+.coupon-details p {
+ color: #2e2e2e;
+    font-size: .88rem;
+    font-weight: 500;
+    line-height: 1.4;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+.modal{
+    z-index: 99999;
+}
+/* Button */
+.coupon-btn {
+  padding: 10px 18px;
+  background: #2ecc71;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.coupon-btn:hover {
+  background: #27ae60;
+}
+@media(max-width:600px){
+    .coupon-details h3{
+        font-size: 1rem;
+    }
+    .coupon-discount {
+        font-size: .9rem;
+        min-width: fit-content;
+        width: 100px;
+        padding: 20px 10px;
+    }
+    .coupon-details p{
+        margin-bottom: .5rem;
+    }
+}
+/* related store */
+.relatedStores .store-card {
+  display: block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.relatedStores .store-content {
+  background: #fff;
+  border-radius: 4px;
+  padding: 15px 10px;
+  text-align: center;
+  border: 1px solid #e1e5ee;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  font-size: .9rem;
+  font-weight: 600;
+  color: #34495e;
+}
+
+
+
+/* Hover Effect */
+.relatedStores .store-card:hover .store-content {
+  background: linear-gradient(135deg, #4a90e2, #2ecc71);
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.relatedStores .store-card:hover h5 {
+  color: #fff;
+}
+
+.relatedStores h3 {
+    font-weight: 600;
+    color: #2e2e2e;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin-bottom: .5rem;
 }

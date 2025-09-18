@@ -57,7 +57,7 @@
    height: 26px;
 }
 .alpha-store p .getStore:hover {
-  background-color: #2ec4b6;
+  background-color: #1c3d82;
   color: #fff;
 }
 .alpha-store .storeList {
@@ -244,7 +244,7 @@
 .loadMoreCoupon button{
   border: none;
   outline: none;
-  background-color: #2ec4b6;
+  background-color: #1c3d82;
   color: #fff;
   font-weight: 500;
   padding: .5rem 1rem;

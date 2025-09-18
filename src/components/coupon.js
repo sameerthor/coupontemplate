@@ -42,82 +42,61 @@ export default function Coupon({ store, coupon_data, tot_count, numb }) {
 
     return (
         <>
-            <div key={coupon_data.id} className="coupon-item">
-                <div className="isverified">
-                    <span className="storeName">{store.title} Coupon</span>
-                    <span className="verifiedIcon">
-                        <Image
-                            src={isUnverified ? "/images/unverified.svg" : "/images/verified.svg"}
-                            alt={isUnverified ? "unverified-icon" : "verified-icon"}
-                            width={14}
-                            height={14}
-                        />
-                        <small> {isUnverified ? 'Unverified' : 'Verified'}</small>
-                    </span>
-                </div>
-                <div className="couponInfo">
-                    <div className="latest-coupon">
-                        <div className="coupon-title">{coupon_data.discount_value || "Best Deal"}</div>
-                        {/* <p className="couponDesc">{coupon_data.content}</p> */}
-                        <p className="couponDesc" dangerouslySetInnerHTML={{ __html: coupon_data.content }} />
-                    </div>
-                    <div className="coupon-detail coupon-button-type">
-                        {coupon_data.coupon_type === "code" ? (
-                            <a
-                                onClick={async (e) => {
-                                    // Set the copied_code in localStorage (no need to await as it's synchronous)
-                                    localStorage.setItem('copied_code', coupon_data.id);
+            
+            {/* <!-- Coupon Card --> */}
+            <div key={coupon_data.id} className="coupon-card">
+                <div className="coupon-discount">{coupon_data.discount_value || "Best Deal"}</div>
+                <div className="coupon-details">
+                    <h3>Exclusive WordPress Theme Deal</h3>
+                    <p  dangerouslySetInnerHTML={{ __html: coupon_data.content }} />
+                    {coupon_data.coupon_type === "code" ? (
+                        <button 
+                            onClick={async (e) => {
+                                // Set the copied_code in localStorage (no need to await as it's synchronous)
+                                localStorage.setItem('copied_code', coupon_data.id);
 
-                                    // Copy the coupon code to the clipboard
-                                    navigator.clipboard.writeText(coupon_data.coupon_code).then(() => {
-                                        //                                        console.log("Coupon code copied to clipboard");
-                                    }).catch((error) => {
-                                        console.error("Error copying to clipboard: ", error);
-                                    });
+                                // Copy the coupon code to the clipboard
+                                navigator.clipboard.writeText(coupon_data.coupon_code).then(() => {
+                                    //                                        console.log("Coupon code copied to clipboard");
+                                }).catch((error) => {
+                                    console.error("Error copying to clipboard: ", error);
+                                });
 
-                                    // Open the store's page in a new tab
-                                    window.open(`/${store.slug}/#c=${coupon_data.id}`, "_blank");
+                                // Open the store's page in a new tab
+                                window.open(`/${store.slug}/#c=${coupon_data.id}`, "_blank");
 
-                                    // Log the affiliate URL
+                                // Log the affiliate URL
 
-                                    // Open the affiliate URL in the same window after a short delay (to ensure proper sequence)
-                                    setTimeout(() => {
-                                        window.open(store.affiliate_url, "_self");
-                                    }, 100);  // Delay added to ensure actions don't overlap
+                                // Open the affiliate URL in the same window after a short delay (to ensure proper sequence)
+                                setTimeout(() => {
+                                    window.open(store.affiliate_url, "_self");
+                                }, 100);  // Delay added to ensure actions don't overlap
 
-                                }}
-                                rel="nofollow"
-                                data-type="code"
-                                className="coupon-code coupon-button"
-                                href="javscript:void()"
-
-                            >
-                                <span class="code-text" rel="nofollow">{coupon_data.coupon_code}</span>
-                                <span class="get-code">Get Code</span>
-                            </a>
+                            }}
+                        
+                            data-type="code"
+                            className="coupon-btn"
+                        >
+                        Get Code
+                        </button>
                         ) : (
-                            <a
-                                onClick={async (e) => {
+                        <button
+                            onClick={async (e) => {
 
-                                    await localStorage.setItem('copied_code', coupon_data.id)
-                                    window.open(`/${store.slug}`, "_blank");
-                                    setTimeout(() => {
-                                        window.open(store.affiliate_url, "_self");
-                                    }, 100);
-                                }}
-                                rel="nofollow"
-                                data-type="sale"
-                                className="coupon-code coupon-button"
-                                href="javscript:void()"
+                                await localStorage.setItem('copied_code', coupon_data.id)
+                                window.open(`/${store.slug}`, "_blank");
+                                setTimeout(() => {
+                                    window.open(store.affiliate_url, "_self");
+                                }, 100);
+                            }}
+                            data-type="sale"
+                            className="coupon-btn"
                             >
-                               
-                                <span class="code-text" rel="nofollow">*****************</span>
-                                <span class="get-code">Show Code</span>
-                            </a>
-                        )}
-                    </div>
+                            Get Deal
+                        </button>    
+                        )} 
                 </div>
-            </div >
+            </div>
             <>
                 {modalOpen && coupon_data.coupon_type === "code" && (
                     <div

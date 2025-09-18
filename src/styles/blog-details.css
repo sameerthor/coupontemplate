@@ -107,7 +107,7 @@
 }
 .blogContent .authorImg{
     margin-right: .5rem;
-    border: 1px solid #2ec4b6;
+    border: 1px solid #1c3d82;
     border-radius: 50%;
     padding: .15rem;
 }
@@ -341,10 +341,10 @@
     font-weight: 500;
 }
 .commentbox .input form input:focus{
-   border: 1px solid #2ec4b6;
+   border: 1px solid #1c3d82;
 }
 .commentbox .input form textarea:focus{
-    border: 1px solid #2ec4b6;
+    border: 1px solid #1c3d82;
  }
 @media (max-width: 700px){
     .input form input, textarea{
@@ -357,7 +357,7 @@
 }
 .commentbox .input form button{
     border: none;
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     outline: none;
     color: #fff;
     border-radius: 5px;
@@ -427,7 +427,7 @@
     outline: none;
     font-weight: 500;
     width: 100%;
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     padding: .5rem 1rem;
     border-radius: 4px;
     letter-spacing: .5px;
@@ -481,7 +481,7 @@
 }
 .recentPost .authorImg{
     margin-right: .5rem;
-    border: 1px solid #2ec4b6;
+    border: 1px solid #1c3d82;
     border-radius: 50%;
     padding: .15rem;
 }

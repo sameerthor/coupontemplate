@@ -55,7 +55,7 @@
 }
 .store-bg-1 {
     padding: 20px;
-    background-image: linear-gradient(to  right, #2ec4b6, #2ec4b58b);
+    background-image: linear-gradient(to  right, #1c3d82, #2ec4b58b);
     color: #fff;
     font-weight: 500;
     border-radius: 5px;
@@ -69,7 +69,7 @@
     background-color: #ffffff;
     padding-top: 20px;
     margin: 5px auto;
-    border: 3px solid #2ec4b6;
+    border: 3px solid #1c3d82;
     box-shadow: 0px 0px 5px 0px rgb(0 81 250 / 20%);
     border-radius: 50%;
 }
@@ -236,7 +236,7 @@
     display: flex;
     font-weight: 600;
     padding: .4rem 1rem;
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -263,7 +263,7 @@
 }
 .pagination ul li a{ 
     padding: .3rem 1rem;
-    border: 1px solid #2ec4b6;
+    border: 1px solid #1c3d82;
     display: inline-block;
     margin: 0 .5rem;
     border-radius: 3px;
@@ -273,7 +273,7 @@
     cursor: pointer;
 }
 .pagination ul li a.active{
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     color: #fff;
 }
 
@@ -905,7 +905,7 @@
    font-weight: 600;
    letter-spacing: .5px;
    display: block;
-   color: #2ec4b6;
+   color: #1c3d82;
    font-size: .75rem;
 
 }
@@ -923,7 +923,7 @@
 }
 .store-bg-1 {
     padding: 20px;
-    background-image: linear-gradient(to  right, #2ec4b6, #2ec4b58b);
+    background-image: linear-gradient(to  right, #1c3d82, #2ec4b58b);
     color: #fff;
     font-weight: 500;
     border-radius: 5px;
@@ -937,7 +937,7 @@
     background-color: #ffffff;
     padding-top: 20px;
     margin: 5px auto;
-    border: 3px solid #2ec4b6;
+    border: 3px solid #1c3d82;
     box-shadow: 0px 0px 5px 0px rgb(0 81 250 / 20%);
     border-radius: 50%;
 }
@@ -1112,7 +1112,7 @@
     display: flex;
     font-weight: 600;
     padding: .4rem 1rem;
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -1139,7 +1139,7 @@
 }
 .pagination ul li a{ 
     padding: .3rem 1rem;
-    border: 1px solid #2ec4b6;
+    border: 1px solid #1c3d82;
     display: inline-block;
     margin: 0 .5rem;
     border-radius: 3px;
@@ -1149,7 +1149,7 @@
     cursor: pointer;
 }
 .pagination ul li a.active{
-    background-color: #2ec4b6;
+    background-color: #1c3d82;
     color: #fff;
 }
 @media(max-width:600px){

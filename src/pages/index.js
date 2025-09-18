@@ -17,223 +17,160 @@ export default function Home({ categories, stores, blogs }) {
   return (
     <>
       <NextSeo
-        title="Supercosts - Best Discount Code, Coupons & Promo Codes 2025"
-        description="Find out the working and verified coupon codes only at Supercosts.com. All the coupons are tested and verified by the team."
+        title="Coupon.Template - Best Discount Code, Coupons & Promo Codes 2025"
+        description="Find out the working and verified coupon codes only at Coupon.Template.com. All the coupons are tested and verified by the team."
       />
-      <section className="homeBanner">
-        <div className="container">
-          <div className="banner-slider">
-            {/* <Carousel showThumbs={false}>
-              {[1, 2, 3, 4].map((num) => (
-                <div key={num}>
-                  <a href="#">
-                    <Image
-                      src={`/images/banner-${num}.png`}
-                      width={0}
-                      height={0}
-                      sizes="100vw"
-                      style={{ width: "100%", height: "auto" }}
-                      alt={`Banner ${num}`}
-                    />
-                  </a>
-                </div>
-              ))}
-            </Carousel> */}
-            <Carousel showThumbs={false}>
-              <div>
-                <a href="/category/clothing-and-accessories">
-                  <Image
-                    src={`/images/banner-1.png`}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{ width: "100%", height: "auto" }}
-                    alt={`fashion`}
-                  />
-                </a>
-              </div>
-              <div>
-                <a href="/category/beauty-products">
-                  <Image
-                    src={`/images/banner-2.png`}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{ width: "100%", height: "auto" }}
-                    alt={`beauty-products`}
-                  />
-                </a>
-              </div>
-              <div>
-                <a href="/category/lifestyle">
-                  <Image
-                    src={`/images/banner-3.png`}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{ width: "100%", height: "auto" }}
-                    alt={`Life-style`}
-                  />
-                </a>
-              </div>
-              <div>
-                <a href="/category/health-and-wellness">
-                  <Image
-                    src={`/images/banner-4.png`}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{ width: "100%", height: "auto" }}
-                    alt={`health and wellness`}
-                  />
-                </a>
-              </div>
-            </Carousel>
+      {/* <!-- HERO SECTION --> */}
+      <section id="hero">
+        <div className="hero-container">
+          <div className="hero-text">
+            <h1>Supercharge Your Website with <span>Coupon.Template</span></h1>
+            <p>Get exclusive deals on premium <strong> themes</strong>, <strong> fonts</strong>, 
+              <strong> plugins</strong>, and <strong>design tools</strong>.</p>
+            <button>Explore Deals</button>
+          </div>
+          <div className="hero-image">
+             <Image
+                src={'/images/hero.webp'}
+                width={500}
+                height={300}
+                alt="hero-image"
+             />
           </div>
         </div>
       </section>
-      {/* Explore Categories */}
-      <section className="container-fluid categories-box">
-        <div className="container">
-          <h2>Explore categories</h2>
-          <div className="row">
-            {categories.slice(0, 12).map((item, index) => (
-              <div
-                className="col-lg-3 col-md-6 col-sm-6 category-item"
-                key={index}
-              >
-                <div className="category-brand container">
-                  <div className="d-flex justify-content-center align-items-center">
-                    <Link href={`/category/${item.slug}`}>
-                      <span>
-                        <i className="fa fa-university" aria-hidden="true" />
-                      </span>
-                      {item.title}
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+
+      {/* <!-- ABOUT --> */}
+      <section id="about">
+        <h2>About Coupon.Template</h2>
+        <p>At <strong>Coupon.Template</strong>, we help creators, developers, and businesses
+          access premium website tools at unbeatable prices.</p>
+        <p>
+            At Coupon.Template, we make it easier to discover themes, plugins, fonts, and templates that elevate your projects without overspending. Whether you’re building a personal blog, a corporate website, or a full-fledged eCommerce store, our curated deals bring you the best tools at the best value.
+        </p>
+        <p>
+            We partner with trusted developers and leading marketplaces to ensure you always get authentic, high-quality products. With exclusive discounts and updated offers, Coupon.Template helps you stay ahead in the digital space while keeping your budget in check.
+        </p>
+      </section>
+
+      {/* <!-- FEATURED TOOLS --> */}
+      <section id="featured">
+        <h2>Featured Tools & Services</h2>
+        <div className="tools-grid">
+          <div className="tool-card"><h3>WordPress Plugins</h3><p>Boost site functionality.</p></div>
+          <div className="tool-card"><h3>Website Templates</h3><p>Responsive templates for any niche.</p></div>
+          <div className="tool-card"><h3>Fonts & Typography</h3><p>Beautiful fonts for design.</p></div>
+          <div className="tool-card"><h3>Builder Tools</h3><p>Create stunning sites without coding.</p></div>
+        </div>
+      </section>
+
+      {/* <!-- THEMES --> */}
+      <section id="themes">
+        <h2>Popular Themes</h2>
+        <div className="theme-grid">
+          
+          <div className="theme-card">
+              <div className="discountBadge">
+               20% OFF
+             </div>
+             <Image
+                src={'/images/woocommerce-theme.avif'}
+                width={400}
+                height={400}
+                alt="theme"
+             />
+            <div className="content"><h3>Business Pro</h3><p>Modern theme for startups & agencies.</p></div>
           </div>
-          <div className="more-btn">
-            <Link href="/category">Explore More</Link>
+          <div className="theme-card">
+            <div className="discountBadge">
+               30% OFF
+             </div>
+              <Image
+                src={'/images/jupiterx.avif'}
+                width={400}
+                height={400}
+                alt="theme"
+             />
+            <div className="content"><h3>Creative Portfolio</h3><p>Showcase work beautifully.</p></div>
+          </div>
+          <div className="theme-card">
+            <div className="discountBadge">
+               40% OFF
+             </div>
+              <Image
+                src={'/images/impreza.avif'}
+                width={400}
+                height={400}
+                alt="theme"
+             />
+            <div className="content"><h3>eCommerce Hub</h3><p>Stylish theme for online stores.</p></div>
           </div>
         </div>
       </section>
-      {/* Trending Deals */}
-      <section className="trandingDeals">
-        <div className="container">
-          <h2>Trending Deals</h2>
-          <div className="row">
-            {stores
-              .filter((x) => x.home_options === "1")
-              .slice(0, 12)
-              .map((item, index) => (
-                <div className="col-lg-2 col-md-4 col-sm-6 mb-3 p-0" key={index}>
-                  <div className="trandingItem">
-                    <Link href={`/${item.slug}`}>
-                      <div>
-                        <Image
-                          src={
-                            validImageSrc(item.image)
-                              ? item.image
-                              : "/images/default-placeholder.png"
-                          }
-                          alt={`${item.title} coupons`}
-                          className="store-product-logo"
-                          width={93}
-                          height={40}
-                        />
-                        <div className="storeInfo text-center">
-                          <p>{item.seo_description}</p>
-                          <div class="angled-button">************************<span class="btn-angle">Show Code</span></div>
-                        </div>
-                      </div>
-                      <div className="boxFooter">
-                        <span>Active</span>
-                        <span>
-                          <Image
-                            src="/images/verified-green-icon.png"
-                            width={12}
-                            height={12}
-                            alt="Verified"
-                            className="verified-icon"
-                          />
-                          Verified
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              ))}
+
+       {/* <!-- Plugin --> */}
+      <section>
+        <h2>Top Plugins</h2>
+        <div className="theme-grid">
+          <div className="theme-card">
+             <div className="discountBadge">
+               20% OFF
+             </div>
+             <Image
+                src={'/images/filter.avif'}
+                width={400}
+                height={400}
+                alt="theme"
+             />
+            <div className="content"><h3>Filter Everything  WordPress  WooCommerce Produ</h3><p>Modern theme for startups & agencies.</p></div>
+          </div>
+          <div className="theme-card">
+              <div className="discountBadge">
+               25% OFF
+             </div>
+              <Image
+                src={'/images/file-bird.avif'}
+                width={400}
+                height={400}
+                alt="theme"
+             />
+            <div className="content"><h3>FileBird - WordPress Media Library Folders</h3><p>Showcase work beautifully.</p></div>
+          </div>
+          <div className="theme-card">
+              <div className="discountBadge">
+               30% OFF
+             </div>
+              <Image
+                src={'/images/toolboxai.avif'}
+                width={400}
+                height={400}
+                alt="theme"
+             />
+            <div className="content"><h3>ToolboxAI – AI Tools Directory SaaS</h3><p>Stylish theme for online stores.</p></div>
           </div>
         </div>
       </section>
-      {/* Featured Stores */}
-      <section className="container-fluid featured-store">
-        <div className="container">
-          <h2>Featured Stores</h2>
-          <div className="row row-cols-2">
-            {stores
-              .filter((x) => x.home_options === "2")
-              .slice(0, 12)
-              .map((item, index) => (
-                <div className="col-lg-2 col-md-3 col-sm-6 featured-box" key={index}>
-                  <div className="featured-item">
-                    <Link href={`/${item.slug}`}>
-                      <Image
-                        src={
-                          validImageSrc(item.image)
-                            ? item.image
-                            : "/images/default-placeholder.png"
-                        }
-                        width={500}
-                        height={375}
-                        alt={item.title}
-                        quality={100} // Increase image quality (default is 75)
-                      />
-                    </Link>
-                    <Link href={`/${item.slug}`} className="store-name">
-                      {item.title}
-                    </Link>
-                  </div>
-                </div>
-              ))}
-          </div>
+
+      {/* <!-- CATEGORIES --> */}
+      <section id="categories">
+        <h2>Browse by Category</h2>
+        <div className="category-list">
+          <div className="category-item">Themes</div>
+          <div className="category-item">Fonts</div>
+          <div className="category-item">Plugins</div>
+          <div className="category-item">Templates</div>
+          <div className="category-item">Builder Tools</div>
         </div>
       </section>
-      {/* Trending Blogs */}
-      <section className="container-fluid tranding">
-        <div className="container">
-          <div className="row tranding-blog">
-            <h2>Trending Blogs</h2>
-            {blogs.slice(0, 12).map((item, index) => (
-              <div className="col-lg-3 col-md-6 col-sm-12 blog-box" key={index}>
-                <Link href={`/blog/${item.slug}`} className="blog-item shadow-sm">
-                  <span>
-                    <Image
-                      src={
-                        validImageSrc(item.image)
-                          ? item.image
-                          : "/images/default-placeholder.png"
-                      }
-                      alt={item.meta_description}
-                      width={100}
-                      height={100}
-                    />
-                  </span>
-                  <p>{item.meta_description}</p>
-                  <span className="date">
-                    {moment(item.updated_at).format("LL")}
-                  </span>
-                </Link>
-              </div>
-            ))}
-          </div>
-          <div className="more-btn">
-            <Link href="/blog">More Blogs</Link>
-          </div>
-        </div>
+
+      {/* <!-- NEWSLETTER --> */}
+      <section id="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Get the latest deals and tools directly in your inbox.</p>
+        <form>
+          <input type="email" placeholder="Enter your email" required/>
+          <button type="submit">Subscribe</button>
+        </form>
       </section>
     </>
   );
@@ -242,9 +179,9 @@ export default function Home({ categories, stores, blogs }) {
 export async function getStaticProps() {
   try {
     const [categoriesRes, storesRes, blogsRes] = await Promise.all([
-      fetch(`https://backend.supercosts.com/categories?ordering=title`),
-      fetch(`https://backend.supercosts.com/stores?ordering=title`),
-      fetch(`https://backend.supercosts.com/posts?ordering=-updated_at`),
+      fetch(`https://backend.Coupon.Template.com/categories?ordering=title`),
+      fetch(`https://backend.Coupon.Template.com/stores?ordering=title`),
+      fetch(`https://backend.Coupon.Template.com/posts?ordering=-updated_at`),
     ]);
 
     const [categories, stores, blogs] = await Promise.all([

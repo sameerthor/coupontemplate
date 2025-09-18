@@ -176,7 +176,7 @@ const StorePage = ({ store, relStores, simCat }) => {
                         </div>
 
                         {/* Coupons List */}
-                        <div className="listCoupns">
+                        <div className="coupon-list">
                             {store.coupon_set.length > 0 && store.coupon_set.sort(function (a, b) {
                                 return a.coupon_type !== null ? a.coupon_type.localeCompare(b.coupon_type) : a;
                             }).map((item, index) =>
@@ -242,39 +242,43 @@ const StorePage = ({ store, relStores, simCat }) => {
                                 </table>
                             </div>
                         </div> */}
-
-
-
-                        {/* Related Stores or Similar Categories */}
-                        {relStores.length > 3 ? (
-                            <>
-                                <div className="row p-0"> <h4 className="storeWidgetHeading relatedStore p-0">Related Stores</h4></div>
-                                <div class="topStore mb-4">
-                                    <ul>
-                                        {relStores.map(store => (
-                                            <li key={store.slug}>
-                                                <Link href={`/${store.slug}`}>{store.title}</Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                            </>
-                        ) : (
-                            <>
-                                <div className="row p-0"> <h4 className="storeWidgetHeading relatedStore p-0">Similar Categories</h4></div>
-                                <div className="topStore mb-4">
-                                    <ul>
-                                        {simCat.results.map(category => (
-                                            <li key={category.slug}>
-                                                <Link href={`/category/${category.slug}`}>{category.title}</Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </>
-                        )}
                     </div>
+                    {/* Related Stores or Similar Categories */}
+                     {relStores.length > 3 ? (
+                        <>
+                            <section className="relatedStores py-5">
+                                <h3 className="mb-4">Related Stores</h3>
+                                <div className="row g-4">
+                                    {relStores.map(store => (
+                                        <div className="col-md-4 col-sm-6 mb-3" key={store.slug}>
+                                            <a href={`/${store.slug}`} className="store-card">
+                                                <div className="store-content">
+                                                    {store.title}
+                                                </div>
+                                            </a>
+                                        </div>
+                                     ))}    
+                                </div>
+                            </section>
+                        </>
+                     ) : ( 
+                        <>     
+                            <section className="relatedStores py-5">
+                                <h3 className="mb-4">Related Categories</h3>
+                                <div className="row g-4">
+                                    {simCat.results.map(category => (
+                                    <div className="col-md-4 col-sm-6 mb-3" key={category.slug}>
+                                        <a href={`/category/${category.slug}`} className="store-card">
+                                            <div className="store-content">
+                                               {category.title}
+                                            </div>
+                                        </a>
+                                    </div>
+                                     ))}
+                                </div>
+                            </section>
+                        </> 
+                     )}       
                      {/* comment */}
                      <div className="comment-box">
                         <div id="showComment">

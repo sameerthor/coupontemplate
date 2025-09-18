@@ -95,14 +95,14 @@ function blogDetail({ post, posts }) {
                                 <div className="autorbox">
                                     <div className="authorImg">
                                         <img
-                                            src="https://secure.gravatar.com/avatar/ec0a6ac9bd172932148a187240330fd8?s=450&d=mm&r=g"
+                                            src="/images/mashma-m.webp"
                                             width={38}
                                             height={38}
                                             alt="Blog Author"
                                             title="Blog Author"
                                         />
                                     </div>
-                                    <span className="authorName">Freida McFadden</span>
+                                    <span className="authorName">Mashma M</span>
                                 </div>
                                 <div className="firstImage">
                                     <Image 
@@ -216,7 +216,7 @@ function blogDetail({ post, posts }) {
                                         <Link href={`/blog/${item.slug}`} className="recentLink">
                                             <div className="authorImg">
                                                 <img
-                                                    src="https://secure.gravatar.com/avatar/ec0a6ac9bd172932148a187240330fd8?s=450&d=mm&r=g"
+                                                    src="images/mashma-m.webp"
                                                     width={38}
                                                     height={38}
                                                     alt="Blog Author"
