@@ -5,11 +5,23 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
-export default function Coupon({ store, coupon_data, tot_count, numb }) {
+export default function Coupon({ index, store, coupon_data, tot_count, numb }) {
     const [modalOpen, setModalOpen] = useState(false);
     const [copytext, setCopyText] = useState("Copy code");
     const isUnverified = (coupon_data.coupon_type === "code" ? false : (numb > tot_count - 3));
+    //accordion 
+    const accordionId = `accordion-${index}`;
+    const collapseId = `collapse-${index}`;
+    const historyAccordionId = `historyAccordionId-${index}`;
+    const historyCollapseId = `historyCollapseId-${index}`;
+    //accordion ends
 
+    const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
 
     setTimeout(async () => {
@@ -44,59 +56,97 @@ export default function Coupon({ store, coupon_data, tot_count, numb }) {
         <>
             
             {/* <!-- Coupon Card --> */}
-            <div key={coupon_data.id} className="coupon-card">
-                <div className="coupon-discount">{coupon_data.discount_value || "Best Deal"}</div>
-                <div className="coupon-details">
-                    <h3>Exclusive WordPress Theme Deal</h3>
-                    <p  dangerouslySetInnerHTML={{ __html: coupon_data.content }} />
-                    {coupon_data.coupon_type === "code" ? (
-                        <button 
-                            onClick={async (e) => {
-                                // Set the copied_code in localStorage (no need to await as it's synchronous)
-                                localStorage.setItem('copied_code', coupon_data.id);
+            <div key={coupon_data.id} className="couponWrapper">
+                <div  className="coupon-card">
+                    <div className="coupon-discount">{coupon_data.discount_value || "Best Deal"}</div>
+                    <div className="coupon-details">
+                        <h3>Exclusive WordPress Theme Deal</h3>
+                        <p  dangerouslySetInnerHTML={{ __html: coupon_data.content }} />
+                        {coupon_data.coupon_type === "code" ? (
+                            <button 
+                                onClick={async (e) => {
+                                    // Set the copied_code in localStorage (no need to await as it's synchronous)
+                                    localStorage.setItem('copied_code', coupon_data.id);
 
-                                // Copy the coupon code to the clipboard
-                                navigator.clipboard.writeText(coupon_data.coupon_code).then(() => {
-                                    //                                        console.log("Coupon code copied to clipboard");
-                                }).catch((error) => {
-                                    console.error("Error copying to clipboard: ", error);
-                                });
+                                    // Copy the coupon code to the clipboard
+                                    navigator.clipboard.writeText(coupon_data.coupon_code).then(() => {
+                                        //                                        console.log("Coupon code copied to clipboard");
+                                    }).catch((error) => {
+                                        console.error("Error copying to clipboard: ", error);
+                                    });
 
-                                // Open the store's page in a new tab
-                                window.open(`/${store.slug}/#c=${coupon_data.id}`, "_blank");
+                                    // Open the store's page in a new tab
+                                    window.open(`/${store.slug}/#c=${coupon_data.id}`, "_blank");
 
-                                // Log the affiliate URL
+                                    // Log the affiliate URL
 
-                                // Open the affiliate URL in the same window after a short delay (to ensure proper sequence)
-                                setTimeout(() => {
-                                    window.open(store.affiliate_url, "_self");
-                                }, 100);  // Delay added to ensure actions don't overlap
+                                    // Open the affiliate URL in the same window after a short delay (to ensure proper sequence)
+                                    setTimeout(() => {
+                                        window.open(store.affiliate_url, "_self");
+                                    }, 100);  // Delay added to ensure actions don't overlap
 
-                            }}
-                        
-                            data-type="code"
-                            className="coupon-btn"
-                        >
-                        Get Code
-                        </button>
-                        ) : (
-                        <button
-                            onClick={async (e) => {
-
-                                await localStorage.setItem('copied_code', coupon_data.id)
-                                window.open(`/${store.slug}`, "_blank");
-                                setTimeout(() => {
-                                    window.open(store.affiliate_url, "_self");
-                                }, 100);
-                            }}
-                            data-type="sale"
-                            className="coupon-btn"
+                                }}
+                            
+                                data-type="code"
+                                className="coupon-btn"
                             >
-                            Get Deal
-                        </button>    
-                        )} 
+                            Get Code
+                            </button>
+                            ) : (
+                            <button
+                                onClick={async (e) => {
+
+                                    await localStorage.setItem('copied_code', coupon_data.id)
+                                    window.open(`/${store.slug}`, "_blank");
+                                    setTimeout(() => {
+                                        window.open(store.affiliate_url, "_self");
+                                    }, 100);
+                                }}
+                                data-type="sale"
+                                className="coupon-btn"
+                                >
+                                Get Deal
+                            </button>    
+                            )} 
+
+        
+                    </div>
                 </div>
-            </div>
+                <div className="accordBtn">
+                    <button className="showTncBox tnc tncBtns" data-bs-toggle="collapse" data-bs-target={`#${historyCollapseId}`} title="Show History">Coupon History</button>
+                    <button className="showTncBox tnc tncBtns" onClick={() => scrollToSection('scrollToScreenShot')}>Coupon Screenshot History</button>
+                    <button className="showTncBox tnc tncBtns" data-bs-toggle="collapse" data-bs-target={`#${collapseId}`} title="Show T &amp; C">Terms &amp; Conditions</button>  
+                </div>
+                <div className="accordionBox">
+                    {/* terms and condition accordion */}
+                    <div id={accordionId} className="accordion">
+                        <div id={collapseId} className="collapse" aria-labelledby={`heading-${index}`} data-bs-parent={`#${accordionId}`}>
+                        <div className="card-body">
+                            <div className="tNcBox tNcTop">
+                                <ol><li>Users will get up to 15% Off on the product's price</li><li>The offer is valid for all customers</li><li>Cannot be combined with other promotions or offers</li><li>Other terms and conditions apply.</li></ol>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    {/* coupon history accordion */}
+                    <div id={historyAccordionId} className="accordion">
+                        <div id={historyCollapseId} className="collapse" aria-labelledby={`heading-${index}`} data-bs-parent={`#${historyAccordionId}`}>
+                            <div className="card-body">
+                                <div className="historyBox tNcBox">
+                                    <ul>
+                                        <li>
+                                            <strong>'PJ48Y990'</strong> promo code was used by shoppers 9 days ago and it didn't work.
+                                        </li>
+                                        <li>
+                                             Added by – <button className="addedByBtn">Coupon Experts</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
             <>
                 {modalOpen && coupon_data.coupon_type === "code" && (
                     <div

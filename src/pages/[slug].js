@@ -184,6 +184,107 @@ const StorePage = ({ store, relStores, simCat }) => {
                             )}
 
                         </div>
+                        <div className="testHistory" id="scrollToScreenShot">
+                            <div className="sidebarHeading">
+                                Sand Pal Coupon Code Test History
+                            </div>
+
+                            <p>
+                                Check verified proof of manual testing for Sand Pal
+                            </p>
+
+                            <div className="row">
+                                {/* Item 1 */}
+                                <div className="col-md-6 mb-1 p-1">
+                                <div className="historyItem">
+                                    <div className="historyHeader">
+                                    <span>20% OFF</span>
+                                    <span className="code">
+                                        {store.coupon_code}
+                                        <small
+                                            onClick={() => navigator.clipboard.writeText(store.coupon_code)}
+                                            style={{
+                                                cursor: "pointer",
+                                                color: "blue",
+                                                marginLeft: "8px"
+                                            }}
+                                        >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 448 512"
+                                            aria-hidden="true"
+                                            focusable="false"
+                                            fill="#8e24aa"
+                                            width="16"
+                                            height="16"
+                                        >
+                                            <path d="M384 336l-192 0c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l140.1 0L400 115.9 400 320c0 8.8-7.2 16-16 16zM192 384l192 0c35.3 0 64-28.7 64-64l0-204.1c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1L192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-32-48 0 0 32c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l32 0 0-48-32 0z"></path>
+                                        </svg>
+                                        </small>
+                                    </span>
+                                    </div>
+
+                                    <div className="historyImg">
+                                    <button data-bs-toggle="modal" data-bs-target="#maximizeImage">
+                                        <Image
+                                            alt="20% Off on Castle Builders Kit at Sand Pal  - Claim Your Discount"
+                                            src={'/images/sand.webp'}
+                                            width={400}
+                                            height={250}
+                                        
+                                       />
+                                    </button>
+                                    </div>
+                                </div>
+                                </div>
+
+                                {/* Item 2 */}
+                                <div className="col-md-6 mb-1 p-1">
+                                <div className="historyItem">
+                                    <div className="historyHeader">
+                                    <span>15% OFF</span>
+                                    <span className="code">
+                                        OVERLANDEXPOSUR
+                                        <small
+                                        style={{
+                                            cursor: "pointer",
+                                            color: "blue",
+                                            marginLeft: "8px"
+                                        }}
+                                        >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 448 512"
+                                            aria-hidden="true"
+                                            focusable="false"
+                                            fill="#8e24aa"
+                                            width="16"
+                                            height="16"
+                                        >
+                                            <path d="M384 336l-192 0c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l140.1 0L400 115.9 400 320c0 8.8-7.2 16-16 16zM192 384l192 0c35.3 0 64-28.7 64-64l0-204.1c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1L192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-32-48 0 0 32c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l32 0 0-48-32 0z"></path>
+                                        </svg>
+                                        </small>
+                                    </span>
+                                    </div>
+
+                                    <div className="historyImg">
+                                    <button data-bs-toggle="modal" data-bs-target="#maximizeImage">
+                                        <img
+                                        alt="Sand Pal Coupon Code - Enjoy 15% Off at Checkout"
+                                        loading="lazy"
+                                        width="400"
+                                        height="250"
+                                        decoding="async"
+                                        style={{ color: "transparent" }}
+                                        src="/_next/image?url=https%3A%2F%2Fimg.scoopcost.com%2Fsand-pal-screenshot-2.png&w=828&q=75"
+                                        srcSet="/_next/image?url=https%3A%2F%2Fimg.scoopcost.com%2Fsand-pal-screenshot-2.png&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fimg.scoopcost.com%2Fsand-pal-screenshot-2.png&w=828&q=75 2x"
+                                        />
+                                    </button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                         <div className="row p-0">
                             <h4 className="sidebarHeading p-0">About {store.title}</h4>
                         </div>

@@ -1787,17 +1787,13 @@ table>thead>tr>th, table>thead>tr>td {
   display: flex;
   align-items: center;
   background: #fff;
-  border: 2px dashed #4a90e2;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   width: 100%;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+ 
 }
 
-.coupon-card:hover {
-  transform: translateY(-5px);
-}
+
 
 /* Discount Badge */
 .coupon-discount {
@@ -1914,3 +1910,180 @@ color: #2e2e2e;
     line-height: 1.4;
     margin-bottom: .5rem;
 }
+
+ .accordBtn{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: .5rem;
+        padding: 0 10px;
+    }
+    .accordBtn button{
+       border: none;
+       padding: 0;
+       outline: none;
+       background-color: transparent;
+       font-weight: 600;
+        color: #003b94;
+        background-color: transparent;
+        font-size: .7rem;
+    }
+     .couponWrapper{
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        background: #fff;
+        border: 2px dashed #4a90e2 !important;
+        border-radius: 12px;
+        margin-bottom: 1rem;  
+        border: 1px solid #e6f5ef;
+        border-radius: 16px; 
+        transition: transform 0.3s, box-shadow 0.3s;
+        width: 100%;
+    }
+    .accordionBox{
+        padding: 10px;
+        padding-bottom: 0 !important;
+    }
+     .couponWrapper:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+    .tNcBox {
+    box-shadow: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+   }
+    .tNcBox ol{
+   padding-left: 35px;
+   }
+   .tNcBox ol li::marker{
+    margin-right: 10px;
+    font-weight: 600;
+   }
+   .tNcBox ol li{
+   margin-bottom: .5rem;
+   }
+ 
+   .historyBox {
+    padding-left: 0;
+    padding-bottom: 20px;
+}
+.ratings, .tNcBox {
+    font-size: .8rem;
+    font-weight: 500;
+}
+.historyBox ul {
+    padding-left: 20px;
+}
+.historyBox ul li {
+    font-weight: 600;
+    color: #222;
+    font-size: .8rem;
+    line-height: 2;
+}
+.historyBox ul li button {
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #1a0dab;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.testHistory {
+    margin-bottom: 2rem;
+    background-color: #fff;
+    margin-top: 3rem;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+}
+.testHistory p {
+    font-weight: 500;
+    font-size: .9rem;
+    margin-bottom: 1rem;
+}
+.testHistory .historyItem {
+    border: 2px solid #dee2e6;
+    position: relative;
+    padding: .5rem;
+    background-color: #fff;
+}
+.testHistory .historyItem .historyHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.testHistory .historyItem .historyHeader span {
+    font-weight: 500;
+    font-size: .8rem;
+    color: #000;
+}
+.testHistory .historyItem .historyHeader span.code {
+    color: #8f4100;
+    font-weight: 600;
+}
+.testHistory .historyItem .historyImg button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    display: block;
+}
+.testHistory .historyItem .historyImg img {
+    max-width: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.maximizeImage .modal-body img {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    margin: auto;
+    height: 560px;
+}
+.historyBox ul{
+    padding-left: 20px;
+}
+.historyBox ul li{
+    position: relative;
+    display: block;
+    padding-left: 20px;
+  }
+  .historyBox{
+    padding-left: 0;
+    padding-bottom: 20px;
+  }
+  .historyBox ul{
+    padding-left: 20px;
+  }
+  .historyBox ul li{
+    font-weight: 600;
+    color: #222;
+    font-size: .8rem;
+    line-height: 2;
+  }
+  .historyBox ul li::before{
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 10px;
+    width: 2px;
+    height: 100%;
+    background: #bbb;
+    display: block;
+  }
+  .historyBox ul li:last-child::before{
+   height: 0;
+  }
+  .historyBox ul li::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background: #1c3d82;
+    margin-top: 7px;
+    border-radius: 50%;
+    display: block;
+  }
